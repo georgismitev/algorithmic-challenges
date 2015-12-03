@@ -28,4 +28,21 @@ class HackerRank
     b = (y1 - y2).abs
     gcd(a, b) - 1
   end
+
+  def self.find_divisors(n)
+    divisors = SortedSet.new
+    divisors.add(1)
+    divisors.add(n)
+
+    i = 2
+    while i * i <= n do
+      if n % i == 0
+        divisors.add(i)
+        divisors.add(n / i)
+      end
+      i += 1
+    end
+
+    divisors.to_a
+  end
 end

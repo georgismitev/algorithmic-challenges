@@ -106,4 +106,12 @@ describe HackerRank do
     it { expect(HackerRank.sumar(41, 71, -2, 73)).to eq(0)}
     it { expect(HackerRank.sumar(44, -68, -16, -86)).to eq(5)}
   end
+
+  describe '.find_divisors' do
+    it { expect(HackerRank.find_divisors(12)).to eq([1, 2, 3, 4, 6, 12])}
+    it { expect(HackerRank.find_divisors(16)).to eq([1, 2, 4, 8, 16])}
+    it { expect(HackerRank.find_divisors(2)).to eq([1, 2])}
+    it { expect(HackerRank.find_divisors(4)).to eq([1, 2, 4])}
+    it { expect(HackerRank.find_divisors(149997)).to eq([1, 3, 49999, 149997]) }
+  end
 end
