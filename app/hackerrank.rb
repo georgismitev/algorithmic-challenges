@@ -45,4 +45,25 @@ class HackerRank
 
     divisors.to_a
   end
+
+  def self.sherlock_permutation(n, m)
+    (facts[n + m - 1] / (facts[n] * facts[m - 1])) % 1000000007
+  end
+
+  def self.facts(to = 2500)
+    @sherlock_permutations ||= begin
+      facts = Array.new(to)
+      facts[0] = 1
+      facts[1] = 1
+      facts[2] = 2
+
+      i = 3
+      while i <= facts.size - 1 do
+        facts[i] = facts[i - 1] * i
+        i += 1
+      end
+
+      facts
+    end
+  end
 end
