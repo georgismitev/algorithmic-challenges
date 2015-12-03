@@ -50,8 +50,13 @@ class HackerRank
     (facts[n + m - 1] / (facts[n] * facts[m - 1])) % 1000000007
   end
 
+  def self.candy(n, k)
+    s = (facts[n + k - 1] / (facts[k] * facts[n - 1]))
+    s.to_s.size > 9 ? s.to_s[-9..-1].to_i : s
+  end
+
   def self.facts(to = 2500)
-    @sherlock_permutations ||= begin
+    @facts ||= begin
       facts = Array.new(to)
       facts[0] = 1
       facts[1] = 1

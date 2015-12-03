@@ -317,4 +317,22 @@ describe HackerRank do
 		it { expect(HackerRank.sherlock_permutation(18, 20)).to eq(672631781) }
 		it { expect(HackerRank.sherlock_permutation(19, 10)).to eq(6906900) }
   end
+
+  describe '.candy_store' do
+    let(:test_cases) do
+      [
+        [[311, 160], 344234994],
+        [[335, 110], 577336240],
+        [[42, 447], 579607360],
+        [[244, 259], 885019500],
+        [[520, 186], 679172000]
+      ]
+    end
+
+    it 'tests every candy store' do
+      test_cases.each do |n_and_k, result|
+        expect(HackerRank.candy(*n_and_k)).to eq(result)
+      end
+    end
+  end
 end
