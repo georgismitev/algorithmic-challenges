@@ -5,7 +5,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry', require: false
+  gem 'pry'
 end
 
 gem 'dotenv'
