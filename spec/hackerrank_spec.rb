@@ -335,4 +335,43 @@ describe HackerRank do
       end
     end
   end
+
+  describe '.build_list' do
+    describe 'test case 1' do
+      let(:string) { 'abc' }
+      let(:result) { ['a', 'ab', 'abc', 'ac', 'b', 'bc', 'c'] }
+      it { expect(HackerRank.build_list(string)).to eq(result) }
+    end
+
+    describe 'test case 2' do
+      let(:string) { 'ab' }
+      let(:result) { ['a', 'ab', 'b'] }
+      it { expect(HackerRank.build_list(string)).to eq(result) }
+    end
+
+    describe 'test case 3' do
+      let(:string) { 'xyz' }
+      let(:result) { ['x', 'xy', 'xyz', 'xz', 'y', 'yz', 'z'] }
+      it { expect(HackerRank.build_list(string)).to eq(result) }
+    end
+
+    describe 'test case 1' do
+      let(:string) { 'a' }
+      let(:result) { ['a'] }
+      it { expect(HackerRank.build_list(string)).to eq(result) }
+    end
+
+    describe 'test case 5' do
+      let(:string) { 'abcd' }
+      let(:result) do
+        [
+          'a', 'ab', 'abc', 'abcd', 'abd', 'ac', 'acd', 'ad',
+          'b', 'bc', 'bcd', 'bd',
+          'c', 'cd',
+          'd'
+        ]
+      end
+      it { expect(HackerRank.build_list(string)).to eq(result) }
+    end
+  end
 end

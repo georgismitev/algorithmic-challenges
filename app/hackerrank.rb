@@ -1,5 +1,6 @@
-# helper class to test certain pieces of code
+require 'pry'
 
+# helper class to test certain pieces of code
 class HackerRank
   def self.gcd(a, b)
     b == 0 ? a : gcd(b, a % b)
@@ -70,5 +71,29 @@ class HackerRank
 
       facts
     end
+  end
+
+  def self.build_list(string)
+    permutations = SortedSet.new
+    used = Array.new(string.size) { 0 }
+    generate_permutations(permutations, [], string, used, 0).to_a
+  end
+
+  def self.generate_permutations(permutations, current_permutation, string, used, last_index)
+    permutations.add(current_permutation.join) if current_permutation.size > 0
+
+    last_index.upto(string.size - 1) do |i|
+      if used[i] == 0
+        current_permutation.push(string[i])
+        used[i] = 1
+        last_index += 1
+        generate_permutations(permutations, current_permutation, string, used, last_index)
+        # last_index -= 1
+        used[i] = 0
+        current_permutation.pop
+      end
+    end
+
+    permutations
   end
 end
