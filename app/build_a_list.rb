@@ -1,7 +1,5 @@
-require 'set'
-
 def self.generate_permutations(permutations, current_permutation, string, used, last_index)
-  permutations.add(current_permutation.join) if current_permutation.size > 0
+  permutations.push(current_permutation.join) if current_permutation.size > 0
 
   last_index.upto(string.size - 1) do |i|
     if used[i] == 0
@@ -21,7 +19,7 @@ end
 gets.to_i.times do
   length = gets.to_i
   string = gets.strip
-  permutations = SortedSet.new
+  permutations = []
   used = Array.new(string.size) { 0 }
   puts generate_permutations(permutations, [], string, used, 0).to_a.join("\n")
 end
