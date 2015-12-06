@@ -386,4 +386,17 @@ describe HackerRank do
     it { expect(HackerRank.matrix_tracing(675721, 471481)).to eq(146310899) }
     it { expect(HackerRank.matrix_tracing(454574, 985749)).to eq(7148858) }
   end
+
+  describe '.special_multiple' do
+    it { expect(HackerRank.special_multiple(467)).to eq(900000999) }
+    it { expect(HackerRank.special_multiple(496)).to eq(9990990000) }
+    it { expect(HackerRank.special_multiple(278)).to eq(9909909090) }
+    it { expect(HackerRank.special_multiple(350)).to eq(900900) }
+    it { expect(HackerRank.special_multiple(34)).to eq(999090) }
+    it { expect(HackerRank.special_multiple(47)).to eq(90099) }
+    it { expect(HackerRank.special_multiple(98)).to eq(99000090) }
+    it { expect(HackerRank.special_multiple(15)).to eq(90) }
+    it { expect(HackerRank.special_multiple(67)).to eq(9909099) }
+    it { expect(HackerRank.special_multiple(47)).to eq(90099) }
+  end
 end

@@ -121,4 +121,39 @@ class HackerRank
     facts_m = InverseModule.of(matrix_facts[m - 1], MATRIX_MOD)
     (facts_sum * facts_m * facts_n) % MATRIX_MOD
   end
+
+  def self.special_multiple(n)
+    i = 1
+    while i < special_multiples.size do
+      special_multiples[i].each do |combination_number|
+        number = combination_number.to_i
+        return number if number > 0 && number % n == 0
+      end
+      i += 1
+    end
+  end
+
+  def self.special_multiples
+    @special_multiples ||= begin
+      max = 12
+      array_combinations = Array.new(max) { [] }
+      array_combinations[0] = ['0', '9']
+
+      i = 1
+      while i < array_combinations.size do
+        new_combinations = []
+        ['0', '9'].each do |element|
+          j = 0
+          while j < array_combinations[i - 1].size do
+            new_combinations.push(array_combinations[i - 1][j] + element)
+            j += 1
+          end
+        end
+        array_combinations[i] = new_combinations.sort
+        i += 1
+      end
+
+      array_combinations
+    end
+  end
 end
