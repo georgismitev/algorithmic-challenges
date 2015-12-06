@@ -96,4 +96,29 @@ class HackerRank
 
     permutations
   end
+
+  MATRIX_MOD = 1000000007
+
+  def self.matrix_facts(to = 2000007)
+    @matrix_facts ||= begin
+      f = Array.new(to)
+      f[0] = 1
+      f[1] = 1
+
+      i = 2
+      while i < to do
+        f[i] = (f[i - 1] * i) % MATRIX_MOD
+        i += 1
+      end
+
+      f
+    end
+  end
+
+  def self.matrix_tracing(m, n)
+    facts_sum = matrix_facts[m + n - 2]
+    facts_n = InverseModule.of(matrix_facts[n - 1], MATRIX_MOD)
+    facts_m = InverseModule.of(matrix_facts[m - 1], MATRIX_MOD)
+    (facts_sum * facts_m * facts_n) % MATRIX_MOD
+  end
 end

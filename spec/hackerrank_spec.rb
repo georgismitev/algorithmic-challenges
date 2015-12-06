@@ -374,4 +374,16 @@ describe HackerRank do
       it { expect(HackerRank.build_list(string)).to eq(result) }
     end
   end
+
+  describe '.matrix_tracing' do
+    it { expect(HackerRank.matrix_tracing(2, 3)).to eq(3) }
+    it { expect(HackerRank.matrix_tracing(134333, 553409)).to eq(741521468) }
+    it { expect(HackerRank.matrix_tracing(366974, 828680)).to eq(952393599) }
+    it { expect(HackerRank.matrix_tracing(544882, 825617)).to eq(365880408) }
+    it { expect(HackerRank.matrix_tracing(474666, 108408)).to eq(546955286) }
+    it { expect(HackerRank.matrix_tracing(509757, 614922)).to eq(121897039) }
+    it { expect(HackerRank.matrix_tracing(663644, 680882)).to eq(14417500) }
+    it { expect(HackerRank.matrix_tracing(675721, 471481)).to eq(146310899) }
+    it { expect(HackerRank.matrix_tracing(454574, 985749)).to eq(7148858) }
+  end
 end
