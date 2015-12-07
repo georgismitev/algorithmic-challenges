@@ -164,4 +164,12 @@ class HackerRank
       'NO'
     end
   end
+
+  def self.reverse_game(n, k)
+    if k < n / 2
+      2 * k + 1
+    else
+      2 * (n - k - 1)
+    end
+  end
 end

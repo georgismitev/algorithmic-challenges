@@ -412,4 +412,29 @@ describe HackerRank do
     it { expect(HackerRank.possible_path(8375, 5848, 182, 958)).to eq('NO') }
     it { expect(HackerRank.possible_path(7913, 5387, 3397, 8880)).to eq('YES') }
   end
+
+  describe '.reverse_game' do
+    it { expect(HackerRank.reverse_game(3, 1)).to eq(2) }
+    it { expect(HackerRank.reverse_game(5, 2)).to eq(4) }
+    it { expect(HackerRank.reverse_game(79529, 75478)).to eq(8100) }
+    it { expect(HackerRank.reverse_game(67252, 46614)).to eq(41274) }
+    it { expect(HackerRank.reverse_game(70804, 37775)).to eq(66056) }
+    it { expect(HackerRank.reverse_game(76109, 60695)).to eq(30826) }
+    it { expect(HackerRank.reverse_game(82066, 30266)).to eq(60533) }
+    it { expect(HackerRank.reverse_game(98495, 2317)).to eq(4635) }
+    it { expect(HackerRank.reverse_game(99441, 14378)).to eq(28757) }
+    it { expect(HackerRank.reverse_game(97956, 60835)).to eq(74240) }
+    it { expect(HackerRank.reverse_game(65061, 26283)).to eq(52567) }
+    it { expect(HackerRank.reverse_game(92617, 91020)).to eq(3192) }
+    it { expect(HackerRank.reverse_game(84688, 37515)).to eq(75031) }
+    it { expect(HackerRank.reverse_game(82055, 60583)).to eq(42942) }
+    it { expect(HackerRank.reverse_game(95564, 6711)).to eq(13423) }
+    it { expect(HackerRank.reverse_game(83613, 83005)).to eq(1214) }
+    it { expect(HackerRank.reverse_game(97958, 44998)).to eq(89997) }
+    it { expect(HackerRank.reverse_game(78026, 1062)).to eq(2125) }
+    it { expect(HackerRank.reverse_game(87135, 48677)).to eq(76914) }
+    it { expect(HackerRank.reverse_game(51140, 15265)).to eq(30531) }
+    it { expect(HackerRank.reverse_game(91955, 40272)).to eq(80545) }
+    it { expect(HackerRank.reverse_game(86210, 44931)).to eq(82556) }
+  end
 end
