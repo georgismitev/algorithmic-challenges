@@ -399,4 +399,17 @@ describe HackerRank do
     it { expect(HackerRank.special_multiple(67)).to eq(9909099) }
     it { expect(HackerRank.special_multiple(47)).to eq(90099) }
   end
+
+  describe '.possible_path' do
+    it { expect(HackerRank.possible_path(3299, 7314, 6015, 6906)).to eq('NO') }
+    it { expect(HackerRank.possible_path(2584, 2065, 5206, 6088)).to eq('NO') }
+    it { expect(HackerRank.possible_path(968, 1238, 91, 9293)).to eq('NO') }
+    it { expect(HackerRank.possible_path(7545, 2436, 3299, 4059)).to eq('NO') }
+    it { expect(HackerRank.possible_path(5564, 1059, 4129, 3475)).to eq('YES') }
+    it { expect(HackerRank.possible_path(1595, 4472, 8536, 7035)).to eq('YES') }
+    it { expect(HackerRank.possible_path(3144, 2372, 1788, 1197)).to eq('NO') }
+    it { expect(HackerRank.possible_path(3627, 4710, 9834, 6925)).to eq('NO') }
+    it { expect(HackerRank.possible_path(8375, 5848, 182, 958)).to eq('NO') }
+    it { expect(HackerRank.possible_path(7913, 5387, 3397, 8880)).to eq('YES') }
+  end
 end

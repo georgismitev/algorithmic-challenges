@@ -156,4 +156,12 @@ class HackerRank
       array_combinations
     end
   end
+
+  def self.possible_path(a, b, x, y)
+    if gcd(a, b) == gcd(x, y)
+      'YES'
+    else
+      'NO'
+    end
+  end
 end
