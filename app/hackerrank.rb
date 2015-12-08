@@ -172,4 +172,10 @@ class HackerRank
       2 * (n - k - 1)
     end
   end
+
+  def self.strange_grid(r, c)
+    row = ((r - 1) / 2) * 10
+    column = (r - 1) % 2 == 0 ? (c - 1) * 2 : c * 2 - 1
+    row + column
+  end
 end

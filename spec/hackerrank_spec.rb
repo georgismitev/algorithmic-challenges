@@ -437,4 +437,24 @@ describe HackerRank do
     it { expect(HackerRank.reverse_game(91955, 40272)).to eq(80545) }
     it { expect(HackerRank.reverse_game(86210, 44931)).to eq(82556) }
   end
+
+  describe '.strange_grid' do
+    it { expect(HackerRank.strange_grid(1, 1)).to eq(0) }
+    it { expect(HackerRank.strange_grid(1, 2)).to eq(2) }
+    it { expect(HackerRank.strange_grid(1, 3)).to eq(4) }
+    it { expect(HackerRank.strange_grid(1, 4)).to eq(6) }
+    it { expect(HackerRank.strange_grid(1, 5)).to eq(8) }
+    it { expect(HackerRank.strange_grid(2, 1)).to eq(1) }
+    it { expect(HackerRank.strange_grid(2, 2)).to eq(3) }
+    it { expect(HackerRank.strange_grid(2, 3)).to eq(5) }
+    it { expect(HackerRank.strange_grid(2, 4)).to eq(7) }
+    it { expect(HackerRank.strange_grid(2, 5)).to eq(9) }
+    it { expect(HackerRank.strange_grid(6, 3)).to eq(25) }
+  end
 end
+
+#20 22 24 26 28
+#11 13 15 17 19
+#10 12 14 16 18
+# 1  3  5  7  9
+# 0  2  4  6  8
