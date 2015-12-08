@@ -451,4 +451,20 @@ describe HackerRank do
     it { expect(HackerRank.strange_grid(2, 5)).to eq(9) }
     it { expect(HackerRank.strange_grid(6, 3)).to eq(25) }
   end
+
+  describe '.even_odd_query' do
+    describe 'test case 1' do
+      let(:array) { [1, 2, 7, 0, 8] }
+      it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
+      it { expect(HackerRank.even_odd_query(array, 1, 2)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 2, 3)).to eq('Even') }
+      it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
+      it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
+      it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
+    end
+  end
 end

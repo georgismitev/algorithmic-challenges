@@ -178,4 +178,12 @@ class HackerRank
     column = (r - 1) % 2 == 0 ? (c - 1) * 2 : c * 2 - 1
     row + column
   end
+
+  def self.even_odd_query(array, x, y)
+    if x == y
+      array[x - 1] % 2 == 1 ? 'Odd' : 'Even'
+    else
+      array[x] == 0 || array[x - 1] % 2 == 1 ? 'Odd' : 'Even'
+    end
+  end
 end
