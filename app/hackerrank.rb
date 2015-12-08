@@ -186,4 +186,29 @@ class HackerRank
       array[x] == 0 || array[x - 1] % 2 == 1 ? 'Odd' : 'Even'
     end
   end
+
+  def self.find_gallons(a, b)
+    gallons = Set.new
+    gallons.add(a)
+    gallons.add(b)
+
+    processed = Set.new
+    less_than_b = [b]
+
+    while true do
+      processing = less_than_b.pop
+      ta = a - b + processing
+      processed.add(processing)
+
+      while ta > 0 do
+        gallons.add(ta)
+        less_than_b.push(ta) if ta < b && !processed.include?(ta)
+        ta -= b
+      end
+
+      break if less_than_b.empty?
+    end
+
+    gallons.to_a
+  end
 end

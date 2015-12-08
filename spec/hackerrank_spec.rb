@@ -453,18 +453,22 @@ describe HackerRank do
   end
 
   describe '.even_odd_query' do
-    describe 'test case 1' do
-      let(:array) { [1, 2, 7, 0, 8] }
-      it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
-      it { expect(HackerRank.even_odd_query(array, 1, 2)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 2, 3)).to eq('Even') }
-      it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
-      it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
-      it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
-    end
+    let(:array) { [1, 2, 7, 0, 8] }
+    it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
+    it { expect(HackerRank.even_odd_query(array, 1, 2)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 2, 3)).to eq('Even') }
+    it { expect(HackerRank.even_odd_query(array, 2, 4)).to eq('Even') }
+    it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 1, 3)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 3, 5)).to eq('Odd') }
+    it { expect(HackerRank.even_odd_query(array, 3, 4)).to eq('Odd') }
+  end
+
+  describe '.gallons' do
+    it { expect(HackerRank.find_gallons(10, 3)).to eq([10, 3, 7, 4, 1, 8, 5, 2, 9, 6]) }
+    it { expect(HackerRank.find_gallons(5, 3)).to eq([5, 3, 2, 4, 1]) }
+    it { expect(HackerRank.find_gallons(6, 3)).to eq([6, 3]) }
   end
 end
