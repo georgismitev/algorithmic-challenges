@@ -211,4 +211,20 @@ class HackerRank
 
     gallons.to_a
   end
+
+  def self.time_conversion(time)
+    if time[-2..-1] == 'PM'
+      if time[0..1].to_i > 12
+        time[0..1] = '%.2d' % ((time[0..1].to_i + 12) % 24)
+      elsif time[0..1].to_i < 12
+        time[0..1] = (time[0..1].to_i + 12).to_s
+      end
+    else
+      if time[0..1].to_i >= 11
+        time[0..1] = '%.2d' % ((time[0..1].to_i + 12) % 24)
+      end
+    end
+
+    time[0..-3]
+  end
 end

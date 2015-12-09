@@ -471,4 +471,11 @@ describe HackerRank do
     it { expect(HackerRank.find_gallons(5, 3)).to eq([5, 3, 2, 4, 1]) }
     it { expect(HackerRank.find_gallons(6, 3)).to eq([6, 3]) }
   end
+
+  describe '.time_conversion' do
+    it { expect(HackerRank.time_conversion('12:45:54PM')).to eq('12:45:54') }
+    it { expect(HackerRank.time_conversion('12:40:22AM')).to eq('00:40:22') }
+    it { expect(HackerRank.time_conversion('07:05:45PM')).to eq('19:05:45') }
+    it { expect(HackerRank.time_conversion('07:05:45AM')).to eq('07:05:45') }
+  end
 end
