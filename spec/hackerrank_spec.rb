@@ -478,4 +478,9 @@ describe HackerRank do
     it { expect(HackerRank.time_conversion('07:05:45PM')).to eq('19:05:45') }
     it { expect(HackerRank.time_conversion('07:05:45AM')).to eq('07:05:45') }
   end
+
+  describe '.cut_the_sticks' do
+    it { expect(HackerRank.cut_the_sticks([5, 4, 4, 2, 2, 8])).to eq([6, 4, 2, 1]) }
+    it { expect(HackerRank.cut_the_sticks([1, 2, 3, 4, 3, 3, 2, 1])).to eq([8, 6, 4, 1]) }
+  end
 end
