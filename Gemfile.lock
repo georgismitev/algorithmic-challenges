@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    benchmark-ips (2.3.0)
     coderay (1.1.0)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
@@ -31,6 +32,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  benchmark-ips
   dotenv
   hirb
   pg

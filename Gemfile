@@ -8,6 +8,7 @@ group :development, :test do
   gem 'pry'
 end
 
+gem 'benchmark-ips'
 gem 'dotenv'
 gem 'hirb'
 gem 'pg'
