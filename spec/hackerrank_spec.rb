@@ -483,4 +483,23 @@ describe HackerRank do
     it { expect(HackerRank.cut_the_sticks([5, 4, 4, 2, 2, 8])).to eq([6, 4, 2, 1]) }
     it { expect(HackerRank.cut_the_sticks([1, 2, 3, 4, 3, 3, 2, 1])).to eq([8, 6, 4, 1]) }
   end
+
+  describe '.anagramify' do
+    it { expect(HackerRank.anagramify('aaabbb')).to eq(3) }
+    it { expect(HackerRank.anagramify('ab')).to eq(1) }
+    it { expect(HackerRank.anagramify('abc')).to eq(-1) }
+    it { expect(HackerRank.anagramify('mnop')).to eq(2) }
+    it { expect(HackerRank.anagramify('xyyx')).to eq(0) }
+    it { expect(HackerRank.anagramify('xaxbbbxx')).to eq(1) }
+    it { expect(HackerRank.anagramify('hhpddlnnsjfoyxpciioigvjqzfbpllssuj')).to eq(10) }
+    it { expect(HackerRank.anagramify('xulkowreuowzxgnhmiqekxhzistdocbnyozmnqthhpievvlj')).to eq(13) }
+    it { expect(HackerRank.anagramify('dnqaurlplofnrtmh')).to eq(5) }
+    it { expect(HackerRank.anagramify('aujteqimwfkjoqodgqaxbrkrwykpmuimqtgulojjwtukjiqrasqejbvfbixnchzsahpnyayutsgecwvcqngzoehrmeeqlgknnb')).to eq(26) }
+    it { expect(HackerRank.anagramify('lbafwuoawkxydlfcbjjtxpzpchzrvbtievqbpedlqbktorypcjkzzkodrpvosqzxmpad')).to eq(15) }
+    it { expect(HackerRank.anagramify('drngbjuuhmwqwxrinxccsqxkpwygwcdbtriwaesjsobrntzaqbe')).to eq(-1) }
+    it { expect(HackerRank.anagramify('ubulzt')).to eq(3) }
+    it { expect(HackerRank.anagramify('vxxzsqjqsnibgydzlyynqcrayvwjurfsqfrivayopgrxewwruvemzy')).to eq(13) }
+    it { expect(HackerRank.anagramify('xtnipeqhxvafqaggqoanvwkmthtfirwhmjrbphlmeluvoa')).to eq(13) }
+    it { expect(HackerRank.anagramify('gqdvlchavotcykafyjzbbgmnlajiqlnwctrnvznspiwquxxsiwuldizqkkaawpyyisnftdzklwagv')).to eq(-1) }
+  end
 end
