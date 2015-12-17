@@ -502,4 +502,14 @@ describe HackerRank do
     it { expect(HackerRank.anagramify('xtnipeqhxvafqaggqoanvwkmthtfirwhmjrbphlmeluvoa')).to eq(13) }
     it { expect(HackerRank.anagramify('gqdvlchavotcykafyjzbbgmnlajiqlnwctrnvznspiwquxxsiwuldizqkkaawpyyisnftdzklwagv')).to eq(-1) }
   end
+
+  describe '.find_anagram_pairs' do
+    it { expect(HackerRank.find_anagram_pairs('abba')).to eq(4) }
+    it { expect(HackerRank.find_anagram_pairs('abcd')).to eq(0) }
+    it { expect(HackerRank.find_anagram_pairs('ifailuhkqq')).to eq(3) }
+    it { expect(HackerRank.find_anagram_pairs('hucpoltgty')).to eq(2) }
+    it { expect(HackerRank.find_anagram_pairs('ovarjsnrbf')).to eq(2) }
+    it { expect(HackerRank.find_anagram_pairs('pvmupwjjjf')).to eq(6) }
+    it { expect(HackerRank.find_anagram_pairs('iwwhrlkpek')).to eq(3) }
+  end
 end
