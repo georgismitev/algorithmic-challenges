@@ -307,4 +307,23 @@ class HackerRank
     anagram_hash.each_pair { |k, v| pairs += v * (v - 1) / 2 if v >= 2 }
     pairs
   end
+
+  def self.valid_sherlock_string?(s)
+    alphabet = Hash.new { |hash, key| hash[key] = 0 }
+    i = 0
+
+    while i < s.size do
+      alphabet[s[i]] += 1
+      i += 1
+    end
+
+    numbers = Hash.new { |hash, key| hash[key] = 0 }
+    alphabet.each_pair { |k, v| numbers[v] += 1 }
+
+    if numbers.size == 1 || (numbers.size == 2 && numbers.values.include?(1))
+      'YES'
+    else
+      'NO'
+    end
+  end
 end
