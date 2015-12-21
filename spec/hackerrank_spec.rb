@@ -521,4 +521,90 @@ describe HackerRank do
     it { expect(HackerRank.valid_sherlock_string?('jtqgugmcsxvdwidtcyqpogkdifapuloqykjfxruvfrshcehekoiwbpbrprahwvhliglyxynjotbaswnnnmxbkmcftvsdqajemeul')).to eq('YES') }
     it { expect(HackerRank.valid_sherlock_string?('hfchdkkbfifgbgebfaahijchgeeeiagkadjfcbekbdaifchkjfejckbiiihegacfbchdihkgbkbddgaefhkdgccjejjaajgijdkd')).to eq('YES') }
   end
+
+  describe '.morgan_and_a_string?' do
+    describe 'test case 2' do
+      let(:a) { 'DAD' }
+      let(:b) { 'DAD' }
+      let(:answer) { 'DADADD' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 3' do
+      let(:a) { 'ABCBA' }
+      let(:b) { 'BCBA' }
+      let(:answer) { 'ABBCBACBA' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 4' do
+      let(:a) { 'BAC' }
+      let(:b) { 'BAB' }
+      let(:answer) { 'BABABC' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 5' do
+      let(:a) { 'DAD' }
+      let(:b) { 'DABC' }
+      let(:answer) { 'DABCDAD' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 6' do
+      let(:a) { 'YZYYZYZYY' }
+      let(:b) { 'ZYYZYZYY' }
+      let(:answer) { 'YZYYZYYZYZYYZYZYY' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 7' do
+      let(:a) { 'BANANA' }
+      let(:b) { 'START' }
+      let(:answer) { 'BANANASTART' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 8' do
+      let(:a) { 'JACK' }
+      let(:b) { 'DANIEL' }
+      let(:answer) { 'DAJACKNIEL' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 9' do
+      let(:a) { 'ABACABA' }
+      let(:b) { 'ABACABA' }
+      let(:answer) { 'AABABACABACABA' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 10' do
+      let(:a) { 'ABA' }
+      let(:b) { 'ABAA' }
+      let(:answer) { 'AABAABA' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 11' do
+      let(:a) { 'BD' }
+      let(:b) { 'BA' }
+      let(:answer) { 'BABD' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 14' do
+      let(:a) { 'AAAAAAAAAAB' }
+      let(:b) { 'AAAAAAAAAAC' }
+      let(:answer) { 'AAAAAAAAAAAAAAAAAAAABC' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+
+    describe 'test case 14' do
+      let(:a) { 'CAJA' }
+      let(:b) { 'CABA' }
+      let(:answer) { 'CABACAJA' }
+      it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
+    end
+  end
 end

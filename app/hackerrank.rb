@@ -326,4 +326,38 @@ class HackerRank
       'NO'
     end
   end
+
+  def self.morgan_and_a_string?(a, b)
+    a += '|'
+    b += '|'
+    s = b + a
+    i = 0
+    j = 0
+    k = 0
+    output = []
+    suffix_array = CreateInvertedSuffixArray.from(s)
+
+    while k < s.size && i < a.size && j < b.size do
+      if suffix_array[b.size + i] < suffix_array[j]
+        output.push(a[i])
+        i += 1
+      else
+        output.push(b[j])
+        j += 1
+      end
+      k += 1
+    end
+
+    while i < a.size do
+      output.push(a[i])
+      i += 1
+    end
+
+    while j < b.size do
+      output.push(b[j])
+      j += 1
+    end
+
+    output[0..-3].join
+  end
 end
