@@ -328,8 +328,6 @@ class HackerRank
   end
 
   def self.morgan_and_a_string?(a, b)
-    a += '|'
-    b += '|'
     s = b + a
     i = 0
     j = 0
@@ -358,6 +356,6 @@ class HackerRank
       j += 1
     end
 
-    output[0..-3].join
+    output.join
   end
 end

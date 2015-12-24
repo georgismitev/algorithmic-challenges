@@ -1,6 +1,7 @@
 class CreateInvertedSuffixArray
   def self.from(string)
-    invert(CreateSuffixArray.with_sorting(string))
+    # invert(CreateSuffixArray.with_sorting(string))
+    invert(CreateSuffixArray.with_tree(string))
   end
 
   def self.invert(suffix_array)
