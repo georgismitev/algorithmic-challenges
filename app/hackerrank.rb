@@ -53,7 +53,7 @@ class HackerRank
 
   def self.candy(n, k)
     s = (facts[n + k - 1] / (facts[k] * facts[n - 1]))
-    s.to_s.size > 9 ? s.to_s[-9..-1].to_i : s
+    s.to_s.length > 9 ? s.to_s[-9..-1].to_i : s
   end
 
   def self.facts(to = 2500)
@@ -64,7 +64,7 @@ class HackerRank
       facts[2] = 2
 
       i = 3
-      while i <= facts.size - 1 do
+      while i <= facts.length - 1 do
         facts[i] = facts[i - 1] * i
         i += 1
       end
@@ -75,14 +75,14 @@ class HackerRank
 
   def self.build_list(string)
     permutations = SortedSet.new
-    used = Array.new(string.size) { 0 }
+    used = Array.new(string.length) { 0 }
     generate_permutations(permutations, [], string, used, 0).to_a
   end
 
   def self.generate_permutations(permutations, current_permutation, string, used, last_index)
-    permutations.add(current_permutation.join) if current_permutation.size > 0
+    permutations.add(current_permutation.join) if current_permutation.length > 0
 
-    last_index.upto(string.size - 1) do |i|
+    last_index.upto(string.length - 1) do |i|
       if used[i] == 0
         current_permutation.push(string[i])
         used[i] = 1
@@ -124,7 +124,7 @@ class HackerRank
 
   def self.special_multiple(n)
     i = 1
-    while i < special_multiples.size do
+    while i < special_multiples.length do
       special_multiples[i].each do |combination_number|
         number = combination_number.to_i
         return number if number > 0 && number % n == 0
@@ -140,11 +140,11 @@ class HackerRank
       array_combinations[0] = ['0', '9']
 
       i = 1
-      while i < array_combinations.size do
+      while i < array_combinations.length do
         new_combinations = []
         ['0', '9'].each do |element|
           j = 0
-          while j < array_combinations[i - 1].size do
+          while j < array_combinations[i - 1].length do
             new_combinations.push(array_combinations[i - 1][j] + element)
             j += 1
           end
@@ -230,7 +230,7 @@ class HackerRank
 
   def self.cut_the_sticks(array)
     cuts = []
-    n = array.size
+    n = array.length
     i = 0
 
     array = array.sort
@@ -253,23 +253,23 @@ class HackerRank
   end
 
   def self.anagramify(s)
-    if s.size % 2 == 1
+    if s.length % 2 == 1
       -1
     else
-      size = s.size / 2
+      size = s.length / 2
       a = s[0..size - 1]
       b = s[size..-1]
       alphabet_a = Hash.new { |hash, key| hash[key] = 0 }
       alphabet_b = Hash.new { |hash, key| hash[key] = 0 }
 
       i = 0
-      while i < a.size do
+      while i < a.length do
         alphabet_a[a[i]] += 1
         i += 1
       end
 
       i = 0
-      while i < b.size do
+      while i < b.length do
         alphabet_b[b[i]] += 1
         i += 1
       end
@@ -294,9 +294,9 @@ class HackerRank
     anagram_size = 1
     anagram_hash = Hash.new { |hash, key| hash[key] = 0 }
 
-    while anagram_size < s.size do
+    while anagram_size < s.length do
       i = 0
-      while i < s.size - anagram_size + 1 do
+      while i < s.length - anagram_size + 1 do
         anagram_hash[s[i..i + anagram_size - 1].split('').sort] += 1
         i += 1
       end
@@ -312,7 +312,7 @@ class HackerRank
     alphabet = Hash.new { |hash, key| hash[key] = 0 }
     i = 0
 
-    while i < s.size do
+    while i < s.length do
       alphabet[s[i]] += 1
       i += 1
     end
@@ -320,7 +320,7 @@ class HackerRank
     numbers = Hash.new { |hash, key| hash[key] = 0 }
     alphabet.each_pair { |k, v| numbers[v] += 1 }
 
-    if numbers.size == 1 || (numbers.size == 2 && numbers.values.include?(1))
+    if numbers.length == 1 || (numbers.length == 2 && numbers.values.include?(1))
       'YES'
     else
       'NO'
@@ -332,27 +332,32 @@ class HackerRank
     i = 0
     j = 0
     k = 0
-    output = []
+    z = 0
+    output = Array.new(s.length)
     suffix_array = CreateInvertedSuffixArray.from(s)
 
-    while k < s.size && i < a.size && j < b.size do
-      if suffix_array[b.size + i] < suffix_array[j]
-        output.push(a[i])
+    while k < s.length && i < a.length && j < b.length do
+      if suffix_array[b.length + i] < suffix_array[j]
+        output[z] = a[i]
+        z += 1
         i += 1
       else
-        output.push(b[j])
+        output[z] = b[j]
+        z += 1
         j += 1
       end
       k += 1
     end
 
-    while i < a.size do
-      output.push(a[i])
+    while i < a.length do
+      output[z] = a[i]
+      z += 1
       i += 1
     end
 
-    while j < b.size do
-      output.push(b[j])
+    while j < b.length do
+      output[z] = b[j]
+      z += 1
       j += 1
     end
 

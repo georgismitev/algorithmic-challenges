@@ -1,3 +1,40 @@
+class CreateInvertedSuffixArray
+  def self.from(string)
+    # invert(CreateSuffixArray.with_sorting(string))
+    invert(CreateSuffixArrayWithTree.new(string).create)
+  end
+
+  def self.invert(suffix_array)
+    inverted = Array.new(suffix_array.size - 1)
+
+    i = 1
+    while i < suffix_array.size do
+      inverted[suffix_array[i]] = i
+      i += 1
+    end
+
+    inverted
+  end
+end
+
+class SuffixTreeNode
+  attr_accessor :children
+  attr_accessor :suffix_link
+  attr_accessor :suffix_index
+  attr_accessor :start_index
+  attr_accessor :end_index
+  attr_accessor :split_end
+
+  def initialize(start_index, end_index = nil, split_end = nil, root_node = nil)
+    @children = Array.new(27)
+    @suffix_link = root_node
+    @start_index = start_index
+    @suffix_index = -1
+    @end_index = end_index
+    @split_end = split_end
+  end
+end
+
 class CreateSuffixArrayWithTree
   attr_reader :string
 
@@ -152,4 +189,43 @@ class CreateSuffixArrayWithTree
   def char_to_children
     @char_to_children ||= Hash[('@'..'Z').to_a.map { |e| [e, e.ord % 64] }]
   end
+end
+
+gets.to_i.times do
+  a = gets.strip
+  b = gets.strip
+  s = b + a
+  i = 0
+  j = 0
+  k = 0
+  z = 0
+  output = Array.new(s.length)
+  suffix_array = CreateInvertedSuffixArray.from(s)
+
+  while k < s.length && i < a.length && j < b.length do
+    if suffix_array[b.length + i] < suffix_array[j]
+      output[z] = a[i]
+      z += 1
+      i += 1
+    else
+      output[z] = b[j]
+      z += 1
+      j += 1
+    end
+    k += 1
+  end
+
+  while i < a.length do
+    output[z] = a[i]
+    z += 1
+    i += 1
+  end
+
+  while j < b.length do
+    output[z] = b[j]
+    z += 1
+    j += 1
+  end
+
+  puts output.join
 end
