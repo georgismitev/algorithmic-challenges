@@ -1,5 +1,6 @@
 class SuffixTreeNode
   attr_accessor :children
+  attr_accessor :children_data
   attr_accessor :suffix_link
   attr_accessor :suffix_index
   attr_accessor :start_index
@@ -7,7 +8,8 @@ class SuffixTreeNode
   attr_accessor :split_end
 
   def initialize(start_index, end_index = nil, split_end = nil, root_node = nil)
-    @children = Array.new(256)
+    @children = SortedSet.new
+    @children_data = { }
     @suffix_link = root_node
     @start_index = start_index
     @suffix_index = -1
