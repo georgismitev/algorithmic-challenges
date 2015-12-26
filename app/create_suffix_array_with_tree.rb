@@ -10,8 +10,8 @@ class CreateSuffixArrayWithTree
 
   @@end_index = -1
 
-  def initialize(string)
-    @string = string + '@'
+  def initialize(string, end_character = '@')
+    @string = string + end_character
     @active_edge = -1
     @active_length = 0
     @remaining_suffixes = 0
