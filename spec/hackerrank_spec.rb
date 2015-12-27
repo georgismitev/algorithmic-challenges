@@ -607,4 +607,12 @@ describe HackerRank do
       it { expect(HackerRank.morgan_and_a_string?(a, b)).to eq(answer) }
     end
   end
+
+  describe '.z_function' do
+    it { expect(HackerRank.z_function('aaaaa')).to eq([0, 4, 3, 2, 1]) }
+    it { expect(HackerRank.z_function('aaabaab')).to eq([0, 2, 1, 0, 2, 1, 0]) }
+    it { expect(HackerRank.z_function('abacaba')).to eq([0, 0, 1, 0, 3, 0, 1]) }
+    it { expect(HackerRank.z_function('ababaa')).to eq([0, 0, 3, 0, 1, 1]) }
+    it { expect(HackerRank.z_function('aa')).to eq([0, 1]) }
+  end
 end
