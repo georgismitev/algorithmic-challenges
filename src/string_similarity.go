@@ -39,12 +39,7 @@ func main() {
         }
       }
     }
-    
-    sum = 0
-    for j := 0; j < size; j++ {
-      sum += z_array[j]
-    }
 
-    fmt.Println(sum)
+    fmt.Println("%v", z_array)
   }
 }

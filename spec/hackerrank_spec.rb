@@ -615,4 +615,14 @@ describe HackerRank do
     it { expect(HackerRank.z_function('ababaa')).to eq([0, 0, 3, 0, 1, 1]) }
     it { expect(HackerRank.z_function('aa')).to eq([0, 1]) }
   end
+
+  describe '.common_child' do
+    it { expect(HackerRank.common_child('ABCD', 'ABDC')).to eq(3) }
+    it { expect(HackerRank.common_child('HARRY', 'SALLY')).to eq(2) }
+    it { expect(HackerRank.common_child('HARRY', 'SALL')).to eq(1) }
+    it { expect(HackerRank.common_child('AA', 'BB')).to eq(0) }
+    it { expect(HackerRank.common_child('SHINCHAN', 'NOHARAAA')).to eq(3) }
+    it { expect(HackerRank.common_child('ABCDEF', 'FBDAMN')).to eq(2) }
+    it { expect(HackerRank.common_child('ABCDEF', 'ABCDEF')).to eq(6) }
+  end
 end
