@@ -12,10 +12,6 @@ class UndirectedGraph
     adjacency_list[end_vertex].add(start_vertex)
   end
 
-  def vertices
-    adjacency_list.keys
-  end
-
   def [](vertex)
     adjacency_list[vertex]
   end
