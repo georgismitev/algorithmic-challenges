@@ -1,8 +1,56 @@
 package main
 
 import (
+  "bufio"
   "fmt"
+  "os"
+  "strconv"
 )
+
+var scanner *bufio.Scanner
+
+func init() {
+  scanner = bufio.NewScanner(os.Stdin)
+  scanner.Split(bufio.ScanWords)
+}
+
+func atoi(b []byte) (int, error) {
+  neg := false
+  if b[0] == '+' {
+    b = b[1:]
+  } else if b[0] == '-' {
+    neg = true
+    b = b[1:]
+  }
+  n := 0
+  for _, v := range b {
+    if v < '0' || v > '9' {
+      return 0, strconv.ErrSyntax
+    }
+    n = n*10 + int(v-'0')
+  }
+  if neg {
+    return -n, nil
+  }
+  return n, nil
+}
+
+func readInt() int {
+  if scanner.Scan() {
+    i, err := strconv.Atoi(scanner.Text())
+    if err != nil {
+      fmt.Println("Error converting int")
+      os.Exit(1)
+      return 0
+    } else {
+      return i  
+    }
+  } else {
+    fmt.Println("Error scanning int")
+    os.Exit(1)
+    return 0
+  }
+}
 
 type VertexWithLevel struct {
   vertex int
@@ -63,27 +111,26 @@ func (graph UndirectedGraph) FindShortestPaths(startVertex int) map[int]int {
 }
 
 func main() {
-  var t int
   var n int
   var m int
   var start int
   var startEdge int
   var endEdge int
 
-  fmt.Scan(&t)
+  t := readInt()
 
   for k := 0; k < t; k++ {
-    fmt.Scan(&n)
-    fmt.Scan(&m)
+    n = readInt()
+    m = readInt()
 
     graph := NewUndirectedGraph(m)
     for j := 0; j < m; j++ {
-      fmt.Scan(&startEdge)
-      fmt.Scan(&endEdge)
+      startEdge = readInt()
+      endEdge = readInt()
       graph.AddEdge(startEdge, endEdge)
     }
 
-    fmt.Scan(&start)
+    start = readInt()
 
     paths := graph.FindShortestPaths(start)
 
