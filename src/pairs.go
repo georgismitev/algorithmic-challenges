@@ -37,7 +37,7 @@ func atoi(b []byte) (int, error) {
 
 func readInt() int {
   if scanner.Scan() {
-    i, err := strconv.Atoi(scanner.Text())
+    i, err := atoi(scanner.Bytes())
     if err != nil {
       fmt.Println("Error converting int")
       os.Exit(1)
