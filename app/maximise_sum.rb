@@ -1,3 +1,47 @@
+require 'singleton'
+
+class RedBlackTreeNode
+  attr_accessor :value, :color, :parent, :left, :right
+
+  def initialize(value, color = :red)
+    @value = value
+    @color = color
+    @left = @right = @parent = RedBlackNilNode.instance
+  end
+
+  def red?
+    color == :red
+  end
+
+  def black?
+    color == :black
+  end
+end
+
+class RedBlackNilNode < RedBlackTreeNode
+  include Singleton
+
+  def initialize
+    @color = :black
+    @value = nil
+    @left = nil
+    @right = nil
+    @parent = nil
+  end
+
+  def black?
+    true
+  end
+
+  def red?
+    false
+  end
+
+  def nil?
+    true
+  end
+end
+
 class RedBlackTree
   attr_accessor :root, :size
 
@@ -145,4 +189,33 @@ class RedBlackTree
 
     self.size += 1
   end
+end
+
+def self.maximise_sum(array, m, n)
+  prefix_array = Array.new(n)
+  prefix_array[0] = array[0] % m
+
+  prefix_rbtree = RedBlackTree.new
+  prefix_rbtree.insert(prefix_array[0])
+
+  i = 1
+  max_value = prefix_array[0]
+
+  while i < n do
+    prefix_array[i] = (prefix_array[i - 1] + array[i]) % m
+    max_ending_at_i = prefix_array[i]
+    prev_sum = prefix_rbtree.find(prefix_array[i])
+    max_ending_at_i = (prefix_array[i] - prev_sum) % m if prev_sum
+    max_value = [max_value, max_ending_at_i].max
+    prefix_rbtree.insert(prefix_array[i])
+    i += 1
+  end
+
+  max_value
+end
+
+gets.to_i.times do
+  n, m = gets.strip.split(' ').map(&:to_i)
+  array = gets.strip.split(' ').map(&:to_i)
+  puts maximise_sum(array, m, n)
 end

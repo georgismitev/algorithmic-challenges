@@ -452,4 +452,29 @@ class HackerRank
 
     common_child_dp(a[i_start..i_end], b[j_start..j_end], diff)
   end
+
+  def self.maximise_sum(array, m)
+    n = array.length
+
+    prefix_array = Array.new(n)
+    prefix_array[0] = array[0] % m
+
+    prefix_rbtree = RedBlackTree.new
+    prefix_rbtree.insert(prefix_array[0])
+
+    i = 1
+    max_value = prefix_array[0]
+
+    while i < n do
+      prefix_array[i] = (prefix_array[i - 1] + array[i]) % m
+      max_ending_at_i = prefix_array[i]
+      prev_sum = prefix_rbtree.find(prefix_array[i])
+      max_ending_at_i = (prefix_array[i] - prev_sum) % m if prev_sum
+      max_value = [max_value, max_ending_at_i].max
+      prefix_rbtree.insert(prefix_array[i])
+      i += 1
+    end
+
+    max_value
+  end
 end

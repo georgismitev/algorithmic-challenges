@@ -625,4 +625,9 @@ describe HackerRank do
     it { expect(HackerRank.common_child('ABCDEF', 'FBDAMN')).to eq(2) }
     it { expect(HackerRank.common_child('ABCDEF', 'ABCDEF')).to eq(6) }
   end
+
+  describe '.maximise_sum' do
+    it { expect(HackerRank.maximise_sum([3, 3, 9, 9, 5], 7)).to eq(6) }
+    it { expect(HackerRank.maximise_sum([6, 6, 11, 15, 12, 1], 13)).to eq(12) }
+  end
 end
