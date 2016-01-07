@@ -1,0 +1,72 @@
+require 'spec_helper'
+
+describe BinaryIndexedTree do
+  describe 'tree with two elements' do
+    it 'calculates the frequencies right' do
+      tree = BinaryIndexedTree.new(2)
+      expect(tree.value_of(1)).to eq(0)
+      expect(tree.value_of(2)).to eq(0)
+      tree.update(1, 1)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(1)
+      tree.update(2, 1)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(2)
+      tree.update(2, 2)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(4)
+      tree.update(2, -1)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(3)
+      tree.update(2, -1)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(2)
+      tree.update(2, -1)
+      expect(tree.value_of(1)).to eq(1)
+      expect(tree.value_of(2)).to eq(1)
+      tree.update(1, -1)
+      expect(tree.value_of(1)).to eq(0)
+      expect(tree.value_of(2)).to eq(0)
+    end
+  end
+
+  describe 'tree with five elements' do
+    it 'calculates the frequencies right' do
+      tree = BinaryIndexedTree.new(5)
+      expect(tree.range_value_of(1, 5)).to eq(0)
+      tree.update(3, 1)
+      expect(tree.range_value_of(1, 5)).to eq(1)
+      tree.update(3, 1)
+      expect(tree.range_value_of(1, 5)).to eq(2)
+      tree.update(3, 10)
+      expect(tree.range_value_of(1, 5)).to eq(12)
+      tree.update(3, -1)
+      expect(tree.range_value_of(1, 5)).to eq(11)
+      tree.update(3, -10)
+      expect(tree.range_value_of(1, 5)).to eq(1)
+      expect(tree.range_value_of(-1, 3)).to eq(1)
+      tree.update(1, 1)
+      expect(tree.range_value_of(-1, 3)).to eq(2)
+      expect(tree.range_value_of(-1, 5)).to eq(2)
+      expect(tree.range_value_of(0, 10)).to eq(2)
+      expect(tree.range_value_of(1, 10)).to eq(2)
+      expect(tree.range_value_of(2, 5)).to eq(1)
+      tree.update(5, 1)
+      expect(tree.range_value_of(2, 5)).to eq(2)
+      expect(tree.range_value_of(1, 10)).to eq(3)
+      tree.update(5, 21)
+      expect(tree.range_value_of(2, 5)).to eq(23)
+      expect(tree.range_value_of(1, 10)).to eq(24)
+      tree.update(5, -21)
+      expect(tree.range_value_of(2, 5)).to eq(2)
+      expect(tree.range_value_of(1, 10)).to eq(3)
+      expect(tree.range_value_of(2, 6)).to eq(2)
+      tree.update(4, 1)
+      expect(tree.range_value_of(2, 6)).to eq(3)
+      expect(tree.range_value_of(2, 5)).to eq(3)
+      expect(tree.range_value_of(-1, 5)).to eq(4)
+      tree.update(3, 1)
+      expect(tree.range_value_of(0, 4)).to eq(4)
+    end
+  end
+end
