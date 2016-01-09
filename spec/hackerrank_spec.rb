@@ -630,4 +630,14 @@ describe HackerRank do
     it { expect(HackerRank.maximise_sum([3, 3, 9, 9, 5], 7)).to eq(6) }
     it { expect(HackerRank.maximise_sum([6, 6, 11, 15, 12, 1], 13)).to eq(12) }
   end
+
+  describe '.bigger_is_greater' do
+    it { expect(HackerRank.bigger_is_greater('a')).to eq('no answer') }
+    it { expect(HackerRank.bigger_is_greater('ab')).to eq('ba') }
+    it { expect(HackerRank.bigger_is_greater('bb')).to eq('no answer') }
+    it { expect(HackerRank.bigger_is_greater('hefg')).to eq('hegf') }
+    it { expect(HackerRank.bigger_is_greater('dhck')).to eq('dhkc') }
+    it { expect(HackerRank.bigger_is_greater('dkhc')).to eq('hcdk') }
+    it { expect(HackerRank.bigger_is_greater('gojh')).to eq('hgjo') }
+  end
 end

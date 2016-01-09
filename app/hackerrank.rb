@@ -477,4 +477,9 @@ class HackerRank
 
     max_value
   end
+
+  def self.bigger_is_greater(w)
+    n = NextPermutation.of(w)
+    n == -1 ? 'no answer' : n
+  end
 end
