@@ -487,4 +487,11 @@ class HackerRank
     # QuickSort.sort(array)
     MergeSort.sort(array)
   end
+
+  def self.sherlock_and_watson(array, idx, k)
+    output = Array.new(idx.length)
+    k %= array.length
+    idx.length.times { |i| output[i] = array[idx[i] - k] }
+    output
+  end
 end

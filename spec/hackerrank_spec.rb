@@ -647,4 +647,12 @@ describe HackerRank do
     it { expect(HackerRank.sort([3, 2, 1, 9, 2, 1, 6])).to eq([1, 1, 2, 2, 3, 6, 9]) }
     it { expect(HackerRank.sort([38, 27, 43, 3, 9, 82, 10])).to eq([3, 9, 10, 27, 38, 43, 82]) }
   end
+  
+  describe '.sherlock_and_watson' do
+    let(:array) { [1, 2, 3] }
+    let(:idx) { [0, 1, 2] }
+    let(:k) { 2 }
+    let(:expected) { [2, 3, 1] }
+    it { expect(HackerRank.sherlock_and_watson(array, idx, k)).to eq(expected) }
+  end
 end
