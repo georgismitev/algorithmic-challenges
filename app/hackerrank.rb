@@ -482,4 +482,9 @@ class HackerRank
     n = NextPermutation.of(w)
     n == -1 ? 'no answer' : n
   end
+
+  def self.sort(array)
+    # QuickSort.sort(array)
+    MergeSort.sort(array)
+  end
 end

@@ -640,4 +640,11 @@ describe HackerRank do
     it { expect(HackerRank.bigger_is_greater('dkhc')).to eq('hcdk') }
     it { expect(HackerRank.bigger_is_greater('gojh')).to eq('hgjo') }
   end
+
+  describe '.sort' do
+    it { expect(HackerRank.sort([10, 4, 13, 2, -1])).to eq([-1, 2, 4, 10, 13]) }
+    it { expect(HackerRank.sort([6, 6, 11, 15, 12, 1])).to eq([1, 6, 6, 11, 12, 15]) }
+    it { expect(HackerRank.sort([3, 2, 1, 9, 2, 1, 6])).to eq([1, 1, 2, 2, 3, 6, 9]) }
+    it { expect(HackerRank.sort([38, 27, 43, 3, 9, 82, 10])).to eq([3, 9, 10, 27, 38, 43, 82]) }
+  end
 end
