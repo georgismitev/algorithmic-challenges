@@ -669,4 +669,16 @@ describe HackerRank do
     it { expect(HackerRank.maxsubarray([-10])).to eq([-10, -10]) }
     it { expect(HackerRank.maxsubarray([1, -1, -1, -1, -1, 5])).to eq([5, 6]) }
   end
+
+  describe '.string_reduction' do
+    it { expect(HackerRank.string_reduction('cab')).to eq(2) }
+    it { expect(HackerRank.string_reduction('bcab')).to eq(1) }
+    it { expect(HackerRank.string_reduction('ccccc')).to eq(5) }
+    it { expect(HackerRank.string_reduction('aabaaabc')).to eq(1) }
+    it { expect(HackerRank.string_reduction('bcabaabbcacaacbacc')).to eq(1) }
+    it { expect(HackerRank.string_reduction('bcabaaabbaacbccbbbababca')).to eq(1) }
+    it { expect(HackerRank.string_reduction('bababbbcabccbbaccc')).to eq(2) }
+    it { expect(HackerRank.string_reduction('babcbbaabcbcbcbaabbccaacccbbbcaaacabbbbaaaccbcccacbbccaccbbaacaccbabcaaaacaccacbaacc')).to eq(1) }
+    it { expect(HackerRank.string_reduction('ccaaaabcccaaaccbbccbacbcaccaccbbaabaacaacbbaaacbbcabbccbbccacbccbaccabcaccabaaabababbaaacbbbaabc')).to eq(1) }
+  end
 end
