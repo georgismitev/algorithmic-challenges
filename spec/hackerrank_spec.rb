@@ -655,4 +655,18 @@ describe HackerRank do
     let(:expected) { [2, 3, 1] }
     it { expect(HackerRank.sherlock_and_watson(array, idx, k)).to eq(expected) }
   end
+
+  describe '.maxsubarray' do
+    it { expect(HackerRank.maxsubarray([1, 2, 3, 4])).to eq([10, 10]) }
+    it { expect(HackerRank.maxsubarray([1, 2, 3])).to eq([6, 6]) }
+    it { expect(HackerRank.maxsubarray([2, -1, 2, 3, 4, -5])).to eq([10, 11]) }
+    it { expect(HackerRank.maxsubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).to eq([6, 12]) }
+    it { expect(HackerRank.maxsubarray([1, -3, 2, -5, 7, 6, -1, -4, 11, -23])).to eq([19, 27]) }
+    it { expect(HackerRank.maxsubarray([-2, -3, -6, -12, -1, -52])).to eq([-1, -1]) }
+    it { expect(HackerRank.maxsubarray([-1, -2, -3, -4, -5, -6])).to eq([-1, -1]) }
+    it { expect(HackerRank.maxsubarray([1])).to eq([1, 1]) }
+    it { expect(HackerRank.maxsubarray([1, -2])).to eq([1, 1]) }
+    it { expect(HackerRank.maxsubarray([-10])).to eq([-10, -10]) }
+    it { expect(HackerRank.maxsubarray([1, -1, -1, -1, -1, 5])).to eq([5, 6]) }
+  end
 end
