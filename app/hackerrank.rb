@@ -536,8 +536,31 @@ class HackerRank
     return contiguous_sum, non_contiguous_sum
   end
 
-  def self.replacements
-    @replacements ||= {
+  def self.string_reduction_counts(string)
+    counts = Hash.new { |hash, key| hash[key] = 0 }
+
+    i = 0
+    while i < string.length do
+      counts[string[i]] += 1
+      i += 1
+    end
+
+    return string.length if counts.keys.length == 1
+
+    odd = 0
+    even = 0
+
+    counts.each_pair { |_, v| v % 2 == 0 ? even += 1 : odd += 1  }
+
+    if odd == 3 || even == 3
+      2
+    else
+      1
+    end
+  end
+
+  def self.replacement_rules
+    @replacement_rules ||= {
       'ab' => 'c',
       'ba' => 'c',
       'ac' => 'b',
@@ -547,8 +570,8 @@ class HackerRank
     }
   end
 
-  def self.adjacent_replacement(key)
-    replacements[key] || ''
+  def self.replacement(key)
+    replacement_rules[key] || ''
   end
 
   def self.string_reduction(string, results_hash = {})
@@ -564,8 +587,8 @@ class HackerRank
     end
 
     if string_map.keys.length > 1
-      l = adjacent_replacement(string[0..1]) + string[2..-1]
-      r = string[0..-3] + adjacent_replacement(string[-2..-1])
+      l = replacement(string[0..1]) + string[2..-1]
+      r = string[0..-3] + replacement(string[-2..-1])
       results_hash[l] = string_reduction(l, results_hash)
       results_hash[r] = string_reduction(r, results_hash)
 
