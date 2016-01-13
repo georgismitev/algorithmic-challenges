@@ -681,4 +681,11 @@ describe HackerRank do
     it { expect(HackerRank.string_reduction('babcbbaabcbcbcbaabbccaacccbbbcaaacabbbbaaaccbcccacbbccaccbbaacaccbabcaaaacaccacbaacc')).to eq(1) }
     it { expect(HackerRank.string_reduction('ccaaaabcccaaaccbbccbacbcaccaccbbaabaacaacbbaaacbbcabbccbbccacbccbaccabcaccabaaabababbaaacbbbaabc')).to eq(1) }
   end
+
+  describe '.coin_change' do
+    it { expect(HackerRank.coin_change(4, [1, 2, 3])).to eq(4) }
+    it { expect(HackerRank.coin_change(10, [2, 5, 3, 6])).to eq(5) }
+    it { expect(HackerRank.coin_change(6, [1, 2, 3, 4, 6])).to eq(10) }
+    it { expect(HackerRank.coin_change(166, [5, 37, 8, 39, 33, 17, 22, 32, 13, 7, 10, 35, 40, 2, 43, 49, 46, 19, 41, 1, 12, 11, 28])).to eq(96190959) }
+  end
 end
