@@ -688,4 +688,42 @@ describe HackerRank do
     it { expect(HackerRank.coin_change(6, [1, 2, 3, 4, 6])).to eq(10) }
     it { expect(HackerRank.coin_change(166, [5, 37, 8, 39, 33, 17, 22, 32, 13, 7, 10, 35, 40, 2, 43, 49, 46, 19, 41, 1, 12, 11, 28])).to eq(96190959) }
   end
+
+  describe '.find_ceiling' do
+    it { expect(HackerRank.find_ceiling(5, [-1, 2, 4, 10, 13])).to eq([10, 3]) }
+    it { expect(HackerRank.find_ceiling(3, [-1, 2, 4, 10, 13])).to eq([4, 2]) }
+    it { expect(HackerRank.find_ceiling(0, [-1, 2, 4, 10, 13])).to eq([2, 1]) }
+    it { expect(HackerRank.find_ceiling(25, [1, 6, 6, 11, 12, 15])).to eq([-1, -1]) }
+    it { expect(HackerRank.find_ceiling(8, [1, 1, 2, 2, 3, 6, 9])).to eq([9, 6]) }
+    it { expect(HackerRank.find_ceiling(0, [1, 1, 2, 2, 3, 6, 9])).to eq([1, 0]) }
+    it { expect(HackerRank.find_ceiling(-1, [1, 1, 2, 2, 3, 6, 9])).to eq([1, 0]) }
+    it { expect(HackerRank.find_ceiling(7, [2, 5, 6, 8, 9, 10, 12, 15])).to eq([8, 3]) }
+  end
+
+  describe '.lis' do
+    describe 'test case 1' do
+      let(:array) { [15, 27, 14, 38, 26, 55, 46, 65, 85] }
+      it { expect(HackerRank.lis(array)).to eq(6) }
+    end
+
+    describe 'test case 2' do
+      let(:array) { [2, 7, 4, 3, 8] }
+      it { expect(HackerRank.lis(array)).to eq(3) }
+    end
+
+    describe 'test case 3' do
+      let(:array) { [2, 5, 3, 7, 11, 8, 10, 13, 6] }
+      it { expect(HackerRank.lis(array)).to eq(6) }
+    end
+
+    describe 'test case 4' do
+      let(:array) { [1, 5, 3, 2, 4] }
+      it { expect(HackerRank.lis(array)).to eq(3) }
+    end
+
+    describe 'test case 5' do
+      let(:array) { [3, 4, -1, 5, 8, 2, 3, 12, 7, 9, 10] }
+      it { expect(HackerRank.lis(array)).to eq(6) }
+    end
+  end
 end
