@@ -845,7 +845,7 @@ describe HackerRank do
           [4, 5, 0]
         ]
       end
-      let(:weight) { 150 }
+      let(:weight) { 0 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
     end
@@ -867,7 +867,7 @@ describe HackerRank do
           [4, 5, 60],
         ]
       end
-      let(:weight) { 180 }
+      let(:weight) { 130 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
     end

@@ -1,13 +1,15 @@
-require 'pry'
 require 'set'
 
 def self.find_kruskal_weight(vertices, edges)
   weight = 0
   size = vertices.length - 1
   sets = { }
+  vertex_set = { }
 
-  vertices.each_pair { |k, _| sets[k] = [k, Set[k]] }
-
+  vertices.each_pair do |k, _|
+    sets[k] = Set[k]
+    vertex_set[k] = k
+  end
   edges = edges.sort_by { |s, e, w| w }
 
   edge_index = 0
@@ -15,12 +17,14 @@ def self.find_kruskal_weight(vertices, edges)
 
   while i < size && edge_index < edges.length do
     s, e, w = edges[edge_index]
-    s = sets[s][0] if sets[s][1].length == 0
-    unless sets[s][1].include?(e)
+    s = vertex_set[s]
+    e = vertex_set[e]
+    if !sets[s].include?(e)
       weight += w
-      sets[s][1].add(e)
-      sets[e][0] = s
-      sets[e][1].delete(e)
+      sets[e].each do |element|
+        sets[s].add(element)
+        vertex_set[element] = s
+      end
       i += 1
     end
     edge_index += 1
@@ -31,20 +35,13 @@ end
 
 n, m = gets.strip.split.map(&:to_i)
 vertices = { }
-edges = Hash.new { |hash, key| hash[key] = [] }
+edges = Array.new(m)
 m.times do |i|
   start_vertex, end_vertex, weight = gets.strip.split.map(&:to_i)
-  edges[[start_vertex, end_vertex]].push(weight)
+  edges[i] = [start_vertex, end_vertex, weight]
   vertices[start_vertex] = 1
   vertices[end_vertex] = 1
 end
 gets.to_i
 
-only_minimal_edges = []
-edges.each_pair do |k, weights|
-  min = 100000
-  weights.each { |w| min = [w, min].min if w > 0 }
-  only_minimal_edges.push([k[0], k[1], min])
-end
-
-puts find_kruskal_weight(vertices, only_minimal_edges)
+puts find_kruskal_weight(vertices, edges)

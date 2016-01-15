@@ -827,8 +827,12 @@ class HackerRank
     weight = 0
     size = vertices.length - 1
     sets = { }
+    vertex_set = { }
 
-    vertices.each_pair { |k, _| sets[k] = [k, Set[k]] }
+    vertices.each_pair do |k, _|
+      sets[k] = Set[k]
+      vertex_set[k] = k
+    end
     edges = edges.sort_by { |s, e, w| w }
 
     edge_index = 0
@@ -836,15 +840,15 @@ class HackerRank
 
     while i < size && edge_index < edges.length do
       s, e, w = edges[edge_index]
-      if w > 0
-        s = sets[s][0] if sets[s][1].length == 0
-        unless sets[s][1].include?(e)
-          weight += w
-          sets[s][1].add(e)
-          sets[e][0] = s
-          sets[e][1].delete(e)
-          i += 1
+      s = vertex_set[s]
+      e = vertex_set[e]
+      if !sets[s].include?(e)
+        weight += w
+        sets[e].each do |element|
+          sets[s].add(element)
+          vertex_set[element] = s
         end
+        i += 1
       end
       edge_index += 1
     end
