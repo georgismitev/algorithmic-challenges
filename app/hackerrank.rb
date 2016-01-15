@@ -787,4 +787,39 @@ class HackerRank
 
     len + 1
   end
+
+  def self.largest_subsequence(s)
+    return s[0] if s.length == 1
+    rest = largest_subsequence(s[1..-1])
+    rest[0] <= s[0] ? s[0] + rest : rest
+  end
+
+  def self.kmp(string)
+    p = Array.new(string.length) { 0 }
+
+    i = 1
+    j = 0
+    while i < string.length do
+      # go the the last match before current position
+      while j > 0 && string[i] != string[j]
+        j = p[j - 1]
+      end
+
+      if string[i] == string[j]
+        p[i] = j + 1
+        j += 1
+      end
+
+      i += 1
+    end
+
+    p
+  end
+
+  def self.shortest_palindrome(s)
+    reversed = s.reverse
+    string = s + '$' + reversed
+    longest_match = kmp(string).last
+    reversed[0..(s.length - longest_match - 1)] + s
+  end
 end

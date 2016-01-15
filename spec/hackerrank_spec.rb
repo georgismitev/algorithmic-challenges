@@ -726,4 +726,33 @@ describe HackerRank do
       it { expect(HackerRank.lis(array)).to eq(6) }
     end
   end
+
+  describe '.largest_subsequence' do
+    it { expect(HackerRank.largest_subsequence('test')).to eq('tt') }
+    it { expect(HackerRank.largest_subsequence('t')).to eq('t') }
+    it { expect(HackerRank.largest_subsequence('abcd')).to eq('d') }
+    it { expect(HackerRank.largest_subsequence('lexicographically')).to eq('y') }
+    it { expect(HackerRank.largest_subsequence('largest')).to eq('t') }
+    it { expect(HackerRank.largest_subsequence('subsequence')).to eq('uune') }
+    it { expect(HackerRank.largest_subsequence('ifailuhkqq')).to eq('uqq') }
+    it { expect(HackerRank.largest_subsequence('hucpoltgty')).to eq('y') }
+    it { expect(HackerRank.largest_subsequence('ovarjsnrbf')).to eq('vsrf') }
+    it { expect(HackerRank.largest_subsequence('pvmupwjjjf')).to eq('wjjjf') }
+    it { expect(HackerRank.largest_subsequence('iwwhrlkpek')).to eq('wwrpk') }
+  end
+
+  describe '.kmp' do
+    it { expect(HackerRank.kmp('abcdabca')).to eq([0, 0, 0, 0, 1, 2, 3, 1]) }
+    it { expect(HackerRank.kmp('abcaby')).to eq([0, 0, 0, 1, 2, 0]) }
+    it { expect(HackerRank.kmp('aabaabaaa')).to eq([0, 1, 0, 1, 2, 3, 4, 5, 2]) }
+    it { expect(HackerRank.kmp('acacabacacabacacac')).to eq([0, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 4]) }
+  end
+
+  describe '.shortest_palindrome' do
+    it { expect(HackerRank.shortest_palindrome('abab')).to eq('babab') }
+    it { expect(HackerRank.shortest_palindrome('abcd')).to eq('dcbabcd') }
+    it { expect(HackerRank.shortest_palindrome('banana')).to eq('ananabanana') }
+    it { expect(HackerRank.shortest_palindrome('ananab')).to eq('bananab') }
+    it { expect(HackerRank.shortest_palindrome('abcdabca')).to eq('acbadcbabcdabca') }
+  end
 end
