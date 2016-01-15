@@ -822,4 +822,33 @@ class HackerRank
     longest_match = kmp(string).last
     reversed[0..(s.length - longest_match - 1)] + s
   end
+
+  def self.find_kruskal_weight(vertices, edges)
+    weight = 0
+    size = vertices.length - 1
+    sets = { }
+
+    vertices.each_pair { |k, _| sets[k] = [k, Set[k]] }
+    edges = edges.sort_by { |s, e, w| w }
+
+    edge_index = 0
+    i = 0
+
+    while i < size && edge_index < edges.length do
+      s, e, w = edges[edge_index]
+      if w > 0
+        s = sets[s][0] if sets[s][1].length == 0
+        unless sets[s][1].include?(e)
+          weight += w
+          sets[s][1].add(e)
+          sets[e][0] = s
+          sets[e][1].delete(e)
+          i += 1
+        end
+      end
+      edge_index += 1
+    end
+
+    weight
+  end
 end

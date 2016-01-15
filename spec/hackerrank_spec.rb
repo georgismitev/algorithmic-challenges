@@ -755,4 +755,121 @@ describe HackerRank do
     it { expect(HackerRank.shortest_palindrome('ananab')).to eq('bananab') }
     it { expect(HackerRank.shortest_palindrome('abcdabca')).to eq('acbadcbabcdabca') }
   end
+
+  describe '.find_kruskal_weight' do
+    describe 'test case 1' do
+      let(:vertices) do
+        h = Hash.new
+        [1, 2, 3, 4].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 5],
+          [1, 3, 3],
+          [1, 4, 6],
+          [2, 4, 7],
+          [2, 3, 4],
+          [3, 4, 5]
+        ]
+      end
+      let(:weight) { 12 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+    end
+
+    describe 'test case 2' do
+      let(:vertices) do
+        h = Hash.new
+        [1, 2, 3, 4].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 1000],
+          [3, 4, 299],
+          [2, 4, 200],
+          [2, 4, 100],
+          [2, 3, 300],
+          [2, 3, 6]
+        ]
+      end
+      let(:weight) { 1106 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+    end
+
+    describe 'test case 3' do
+      let(:vertices) do
+        h = Hash.new
+        [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 20],
+          [1, 3, 50],
+          [1, 4, 70],
+          [1, 5, 90],
+          [2, 3, 30],
+          [3, 4, 40],
+          [4, 5, 60]
+        ]
+      end
+      let(:weight) { 150 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+    end
+
+    describe 'test case 4' do
+      let(:vertices) do
+        h = Hash.new
+        [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 20],
+          [1, 2, 0],
+          [1, 3, 50],
+          [1, 3, 0],
+          [1, 4, 70],
+          [1, 4, 0],
+          [1, 5, 90],
+          [1, 5, 0],
+          [2, 3, 30],
+          [2, 3, 0],
+          [3, 4, 40],
+          [3, 4, 0],
+          [4, 5, 60],
+          [4, 5, 0]
+        ]
+      end
+      let(:weight) { 150 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+    end
+
+    describe 'test case 5' do
+      let(:vertices) do
+        h = Hash.new
+        [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 0],
+          [1, 3, 50],
+          [1, 4, 70],
+          [1, 5, 90],
+          [2, 3, 30],
+          [3, 4, 40],
+          [4, 5, 60],
+        ]
+      end
+      let(:weight) { 180 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+    end
+  end
 end
