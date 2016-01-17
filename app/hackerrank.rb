@@ -855,4 +855,50 @@ class HackerRank
 
     weight
   end
+
+  def self.find_prim_weight(graph, start_vertex)
+    weight = 0
+
+    visited = { }
+    visited_edges = { }
+
+    visited[start_vertex] = 1
+
+    edges = MinHeap.new
+    graph[start_vertex].keys.each do |end_vertex|
+      edges.insert(
+        Edge.new(
+          start_vertex,
+          end_vertex,
+          graph.edge_weight(start_vertex, end_vertex)
+        )
+      )
+      visited_edges[[start_vertex, end_vertex]] = 1
+    end
+
+    (graph.size - 1).times do
+      min_edge = edges.extract
+      while visited[min_edge.start_vertex] && visited[min_edge.end_vertex] do
+        min_edge = edges.extract
+      end
+      weight += min_edge.weight
+      visited[min_edge.end_vertex] = 1
+
+      graph[min_edge.end_vertex].each_pair do |end_vertex, edge_weight|
+        if !visited[end_vertex] &&
+          !visited_edges[[min_edge.end_vertex, end_vertex]]
+          edges.insert(
+            Edge.new(
+              min_edge.end_vertex,
+              end_vertex,
+              edge_weight
+            )
+          )
+          visited_edges[[min_edge.end_vertex, end_vertex]] = 1
+        end
+      end
+    end
+
+    weight
+  end
 end

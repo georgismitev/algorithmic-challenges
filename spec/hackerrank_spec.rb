@@ -756,10 +756,16 @@ describe HackerRank do
     it { expect(HackerRank.shortest_palindrome('abcdabca')).to eq('acbadcbabcdabca') }
   end
 
-  describe '.find_kruskal_weight' do
+  describe 'minimum spanning tree' do
+    let(:graph) do
+      g = PrimUndirectedGraph.new
+      edges.each { |e| g.add_edge(*e) }
+      g
+    end
+
     describe 'test case 1' do
       let(:vertices) do
-        h = Hash.new
+        h = { }
         [1, 2, 3, 4].each { |k| h[k] = 1 }
         h
       end
@@ -774,13 +780,18 @@ describe HackerRank do
         ]
       end
       let(:weight) { 12 }
+      let(:start_vertex) { 1 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
     end
 
     describe 'test case 2' do
       let(:vertices) do
-        h = Hash.new
+        h = { }
         [1, 2, 3, 4].each { |k| h[k] = 1 }
         h
       end
@@ -795,13 +806,18 @@ describe HackerRank do
         ]
       end
       let(:weight) { 1106 }
+      let(:start_vertex) { 2 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
     end
 
     describe 'test case 3' do
       let(:vertices) do
-        h = Hash.new
+        h = { }
         [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
         h
       end
@@ -817,13 +833,18 @@ describe HackerRank do
         ]
       end
       let(:weight) { 150 }
+      let(:start_vertex) { 1 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
     end
 
     describe 'test case 4' do
       let(:vertices) do
-        h = Hash.new
+        h = { }
         [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
         h
       end
@@ -846,13 +867,18 @@ describe HackerRank do
         ]
       end
       let(:weight) { 0 }
+      let(:start_vertex) { 1 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
     end
 
     describe 'test case 5' do
       let(:vertices) do
-        h = Hash.new
+        h = { }
         [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
         h
       end
@@ -868,8 +894,39 @@ describe HackerRank do
         ]
       end
       let(:weight) { 130 }
+      let(:start_vertex) { 1 }
 
       it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
+    end
+
+    describe 'test case 6' do
+      let(:vertices) do
+        h = { }
+        [1, 2, 3, 4, 5].each { |k| h[k] = 1 }
+        h
+      end
+      let(:edges) do
+        [
+          [1, 2, 3],
+          [1, 3, 4],
+          [4, 2, 6],
+          [5, 2, 2],
+          [2, 3, 5],
+          [3, 5, 7]
+        ]
+      end
+      let(:weight) { 15 }
+      let(:start_vertex) { 1 }
+
+      it { expect(HackerRank.find_kruskal_weight(vertices, edges)).to eq(weight) }
+
+      it 'finds the minimum spanning tree weight with prim' do
+        expect(HackerRank.find_prim_weight(graph, start_vertex)).to eq(weight)
+      end
     end
   end
 end
