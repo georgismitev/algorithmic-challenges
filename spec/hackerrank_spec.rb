@@ -929,4 +929,106 @@ describe HackerRank do
       end
     end
   end
+
+  describe 'floyd shortest path' do
+    let(:graph) do
+      g = FloydDirectedGraph.new
+      edges.each { |e| g.add_edge(*e) }
+      g
+    end
+
+    describe 'test case 1' do
+      let(:edges) do
+        [
+          [1, 2, 5],
+          [1, 4, 24],
+          [2, 4, 6],
+          [3, 4, 4],
+          [3, 2, 7]
+        ]
+      end
+      let(:questions) do
+        [
+          [1, 2],
+          [3, 1],
+          [1, 4]
+        ]
+      end
+      let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
+      it { expect(answers).to eq([5, -1, 11]) }
+    end
+
+    describe 'test case 2' do
+      let(:edges) do
+        [
+          [1, 2, 1],
+          [3, 2, 150],
+          [4, 3, 99],
+          [1, 4, 100],
+          [3, 1, 200]
+        ]
+      end
+      let(:questions) do
+        [
+          [3, 2],
+          [1, 2],
+          [4, 3],
+          [1, 2]
+        ]
+      end
+      let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
+      it { expect(answers).to eq([150, 1, 99, 1]) }
+    end
+
+    describe 'test case 3' do
+      let(:edges) do
+        [
+          [1, 2, 20],
+          [1, 3, 50],
+          [1, 4, 70],
+          [1, 5, 90],
+          [2, 3, 30],
+          [3, 4, 40],
+          [4, 5, 60]
+        ]
+      end
+      let(:questions) do
+        [
+          [1, 4],
+          [5, 1],
+          [2, 5],
+          [3, 4],
+          [1, 4],
+          [1, 2],
+          [3, 1],
+          [1, 2]
+        ]
+      end
+      let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
+      it { expect(answers).to eq([70, -1, 130, 40, 70, 20, -1, 20]) }
+    end
+
+    describe 'test case 4' do
+      let(:edges) do
+        [
+          [2, 1, 298],
+          [3, 4, 299],
+          [2, 4, 200],
+          [2, 4, 100],
+          [3, 2, 300],
+          [3, 2, 6]
+        ]
+      end
+      let(:questions) do
+        [
+          [3, 2],
+          [4, 1],
+          [1, 1],
+          [3, 4]
+        ]
+      end
+      let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
+      it { expect(answers).to eq([6, -1, 0, 106]) }
+    end
+  end
 end

@@ -901,4 +901,17 @@ class HackerRank
 
     weight
   end
+
+  def self.floyd_shortest_paths(graph, questions)
+    answers = Array.new(questions.length)
+
+    floyd = FloydShortestPath.new(graph)
+    floyd.find_shortest_paths
+
+    questions.length.times do |i|
+      answers[i] = floyd.distance_between(*(questions[i]))
+    end
+
+    answers
+  end
 end
