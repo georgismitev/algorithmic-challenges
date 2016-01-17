@@ -932,7 +932,7 @@ describe HackerRank do
 
   describe 'floyd shortest path' do
     let(:graph) do
-      g = FloydDirectedGraph.new
+      g = FloydDirectedGraph.new(vertices)
       edges.each { |e| g.add_edge(*e) }
       g
     end
@@ -954,6 +954,7 @@ describe HackerRank do
           [1, 4]
         ]
       end
+      let(:vertices) { 4 }
       let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
       it { expect(answers).to eq([5, -1, 11]) }
     end
@@ -976,6 +977,7 @@ describe HackerRank do
           [1, 2]
         ]
       end
+      let(:vertices) { 4 }
       let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
       it { expect(answers).to eq([150, 1, 99, 1]) }
     end
@@ -1004,6 +1006,7 @@ describe HackerRank do
           [1, 2]
         ]
       end
+      let(:vertices) { 5 }
       let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
       it { expect(answers).to eq([70, -1, 130, 40, 70, 20, -1, 20]) }
     end
@@ -1027,6 +1030,7 @@ describe HackerRank do
           [3, 4]
         ]
       end
+      let(:vertices) { 4 }
       let(:answers) { HackerRank.floyd_shortest_paths(graph, questions) }
       it { expect(answers).to eq([6, -1, 0, 106]) }
     end

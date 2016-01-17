@@ -1,25 +1,17 @@
 class FloydDirectedGraph
-  attr_accessor :adjacency_list
+  attr_accessor :matrix, :size
 
-  def initialize
-    @adjacency_list = { }
+  def initialize(vertices)
+    size = vertices + 1
+    @size = size
+    @matrix = Array.new(size) do |i|
+      Array.new(size) do |j|
+        i == j ? 0 : Math.max
+      end
+    end
   end
 
   def add_edge(start_vertex, end_vertex, weight)
-    adjacency_list[start_vertex] = { } unless adjacency_list[start_vertex]
-    adjacency_list[end_vertex] = { } unless adjacency_list[end_vertex]
-    adjacency_list[start_vertex][end_vertex] = weight
-  end
-
-  def edge_weight(start_vertex, end_vertex)
-    adjacency_list[start_vertex][end_vertex]
-  end
-
-  def [](vertex)
-    adjacency_list[vertex]
-  end
-
-  def size
-    @size ||= adjacency_list.keys.length
+    @matrix[start_vertex][end_vertex] = weight
   end
 end
