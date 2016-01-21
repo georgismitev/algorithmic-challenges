@@ -9,8 +9,6 @@ class BoyerMooreHorspool
       i += 1
     end
 
-    table[pattern[i]] = size
-
     table
   end
 

@@ -8,7 +8,7 @@ describe BoyerMooreHorspool do
     let(:text) { 'trusthardtoothbrushes' }
 
     it 'returns the bad match table' do
-      expect(bad_match_table).to eq('t' => 1, 'o' => 2, 'h' => 5)
+      expect(bad_match_table).to eq('t' => 1, 'o' => 2)
       expect(bad_match_table['non-existing-key']).to eq(5)
     end
 
@@ -20,7 +20,7 @@ describe BoyerMooreHorspool do
     let(:text) { 'world' }
 
     it 'returns the bad match table' do
-      expect(bad_match_table).to eq('e' => 3, 'h' => 4, 'l' => 1, 'o' => 5)
+      expect(bad_match_table).to eq('e' => 3, 'h' => 4, 'l' => 1)
       expect(bad_match_table['non-existing-key']).to eq(5)
     end
 
@@ -32,7 +32,7 @@ describe BoyerMooreHorspool do
     let(:text) { 'banananab' }
 
     it 'returns the bad match table' do
-      expect(bad_match_table).to eq('a' => 3, 'n' => 1)
+      expect(bad_match_table).to eq('a' => 2, 'n' => 1)
       expect(bad_match_table['non-existing-key']).to eq(3)
     end
 
@@ -44,7 +44,7 @@ describe BoyerMooreHorspool do
     let(:text) { 'bigsingleteammast' }
 
     it 'returns the bad match table' do
-      expect(bad_match_table).to eq('t' => 8, 'e' => 6, 'a' => 2, 'm' => 3, 's' => 1)
+      expect(bad_match_table).to eq('t' => 7, 'e' => 6, 'a' => 2, 'm' => 3, 's' => 1)
       expect(bad_match_table['non-existing-key']).to eq(8)
     end
 
@@ -56,7 +56,7 @@ describe BoyerMooreHorspool do
     let(:text) { 'iamanantelope' }
 
     it 'returns the bad match table' do
-      expect(bad_match_table).to eq('a' => 2, 'n' => 1, 't' => 3)
+      expect(bad_match_table).to eq('a' => 2, 'n' => 1)
       expect(bad_match_table['non-existing-key']).to eq(3)
     end
 
