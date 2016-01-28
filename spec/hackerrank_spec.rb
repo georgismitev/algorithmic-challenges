@@ -1035,4 +1035,49 @@ describe HackerRank do
       it { expect(answers).to eq([6, -1, 0, 106]) }
     end
   end
+
+  describe '.crab_graphs' do
+    let(:graph) do
+      g = Hash.new { |h, k| h[k] = {} }
+      edges.each do |s, e|
+        g[s][e] = 1
+        g[e][s] = 1
+      end
+      g
+    end
+
+    describe 'test case 1' do
+      let(:edges) { [[11, 9], [23, 21]] }
+      let(:t) { 2 }
+      let(:n) { 25 }
+
+      it { expect(HackerRank.crab_graphs(graph, n, t)).to eq(4) }
+    end
+
+    describe 'test case 2' do
+      let(:edges) { [[1, 4], [2, 4], [3, 4], [5, 4], [5, 8], [5, 7], [5, 6]] }
+      let(:t) { 2 }
+      let(:n) { 8 }
+
+      it { expect(HackerRank.crab_graphs(graph, n, t)).to eq(6) }
+    end
+
+    describe 'test case 3' do
+      let(:edges) do
+        [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 1], [1, 4], [2, 5]]
+      end
+      let(:t) { 3 }
+      let(:n) { 6 }
+
+      it { expect(HackerRank.crab_graphs(graph, n, t)).to eq(6) }
+    end
+
+    describe 'test case 4' do
+      let(:edges) { [[46, 44], [46, 10], [20, 16], [43, 21]] }
+      let(:t) { 2 }
+      let(:n) { 50 }
+
+      it { expect(HackerRank.crab_graphs(graph, n, t)).to eq(7) }
+    end
+  end
 end

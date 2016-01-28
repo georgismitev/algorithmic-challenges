@@ -914,4 +914,33 @@ class HackerRank
 
     answers
   end
+
+  def self.crab_graphs(graph, n, t)
+    ford_fulkerson_graph = FordFulkersonGraph.new
+    source = 1
+    consumer = 2 * n + 2
+    head_set = Set.new
+    feet_set = Set.new
+    existing_edges = { }
+
+    graph.each_pair do |s, edges|
+      edges.each_pair do |e, _|
+        head_set.add(2 * s)
+        feet_set.add(2 * s + 1)
+        next if existing_edges[[s, e]] || existing_edges[[e, s]]
+        existing_edges[[s, e]] = 1
+        ford_fulkerson_graph.add_edge(2 * s, 2 * e + 1, 1)
+        ford_fulkerson_graph.add_edge(2 * e, 2 * s + 1, 1)
+      end
+    end
+
+    head_set.each do |k|
+      weight = [ford_fulkerson_graph[k].length, t].min
+      ford_fulkerson_graph.add_edge(source, k, weight)
+    end
+
+    feet_set.each { |k| ford_fulkerson_graph.add_edge(k, consumer, 1) }
+
+    MaxFlow.new(ford_fulkerson_graph).find_max_flow(source, consumer)
+  end
 end
