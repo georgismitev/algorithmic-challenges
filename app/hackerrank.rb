@@ -943,4 +943,90 @@ class HackerRank
 
     MaxFlow.new(ford_fulkerson_graph).find_max_flow(source, consumer)
   end
+
+  def self.get_max_profit(stock_prices_yesterday)
+    size = stock_prices_yesterday.length
+    max_prices = Array.new(size)
+    max_prices[0] = -1
+    max_prices[size - 1] = stock_prices_yesterday[size - 1]
+
+    i = size - 2
+    while i >= 1 do
+      max_prices[i] = [max_prices[i + 1], stock_prices_yesterday[i]].max
+      i -= 1
+    end
+
+    max_profit = 0
+    i = 0
+    while i < size - 1 do
+      max_profit = [max_prices[i + 1] - stock_prices_yesterday[i], max_profit].max
+      i += 1
+    end
+
+    max_profit
+  end
+
+  def self.product_of_other_numbers(array)
+    size = array.length
+    result = Array.new(size)
+    l = Array.new(size)
+    l[0] = 1
+    r = Array.new(size)
+    r[size - 1] = 1
+    
+    i = 1
+    while i < size do
+      l[i] = array[i - 1] * l[i - 1]
+      i += 1
+    end
+
+    i = size - 2
+    while i >= 0 do
+      r[i] = r[i + 1] * array[i + 1]
+      i -= 1
+    end
+
+    i = 0
+    while i < size do
+      result[i] = l[i] * r[i]
+      i += 1
+    end
+
+    result
+  end
+
+  def self.condense_meetings(ranges)
+    max_val = -1
+    i = 0
+    while i < ranges.length do
+      max_val = [ranges[i][1], max_val].max
+      i += 1
+    end
+
+    meeting_times = Array.new(max_val + 1) { 0 }
+    i = 0
+    while i < ranges.length do
+      (ranges[i][1] - 1).downto(ranges[i][0]) do |j|
+        meeting_times[j] += 1
+      end
+      i += 1
+    end
+
+    condensed_meetings = []
+
+    i = 0
+    while i < meeting_times.length do
+      if meeting_times[i] > 0
+        start_range = i
+        while meeting_times[i] > 0
+          i += 1
+        end
+        condensed_meetings.push([start_range, i])
+      end
+
+      i += 1
+    end
+
+    condensed_meetings
+  end
 end

@@ -1080,4 +1080,81 @@ describe HackerRank do
       it { expect(HackerRank.crab_graphs(graph, n, t)).to eq(7) }
     end
   end
+
+  describe '.get_max_profit' do
+    describe 'test case 1' do
+      let(:stock_prices_yesterday) { [10, 7, 5, 8, 11, 9] }
+      it { expect(HackerRank.get_max_profit(stock_prices_yesterday)).to eq(6) }
+    end
+
+    describe 'test case 2' do
+      let(:stock_prices_yesterday) { [10, 7, 1, 8, 11, 9] }
+      it { expect(HackerRank.get_max_profit(stock_prices_yesterday)).to eq(10) }
+    end
+
+    describe 'test case 3' do
+      let(:stock_prices_yesterday) { [10, 7, 1, 8, 11, 9] }
+      it { expect(HackerRank.get_max_profit(stock_prices_yesterday)).to eq(10) }
+    end
+
+    describe 'test case 4' do
+      let(:stock_prices_yesterday) { [12, 10, 9, 8, 7, 6, 5] }
+      it { expect(HackerRank.get_max_profit(stock_prices_yesterday)).to eq(0) }
+    end
+  end
+
+  describe '.product_of_other_numbers' do
+    describe 'test case 1' do
+      let(:array) { [1, 7, 3, 4] }
+      let(:expected_array) { [84, 12, 28, 21] }
+      let(:result) { HackerRank.product_of_other_numbers(array) }
+      it { expect(result).to eq(expected_array) }
+    end
+
+    describe 'test case 2' do
+      let(:array) { [1, 2, 6, 5, 9] }
+      let(:expected_array) { [540, 270, 90, 108, 60] }
+      let(:result) { HackerRank.product_of_other_numbers(array) }
+      it { expect(result).to eq(expected_array) }
+    end
+
+    describe 'test case 3' do
+      let(:array) { [1, 7, 3, 0, 4] }
+      let(:expected_array) { [0, 0, 0, 84, 0] }
+      let(:result) { HackerRank.product_of_other_numbers(array) }
+      it { expect(result).to eq(expected_array) }
+    end
+  end
+
+  describe '.condense_meetings' do
+    describe 'test case 1' do
+      let(:meetings) { [[0, 1], [3, 5], [4, 8], [10, 12], [9, 10]] }
+      let(:expected) { [[0, 1], [3, 8], [9, 12]] }
+      it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
+    end
+
+    describe 'test case 2' do
+      let(:meetings) { [[2, 3], [6, 9]] }
+      let(:expected) { [[2, 3], [6, 9]] }
+      it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
+    end
+
+    describe 'test case 3' do
+      let(:meetings) { [[1, 2], [2, 3]] }
+      let(:expected) { [[1, 3]] }
+      it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
+    end
+
+    describe 'test case 4' do
+      let(:meetings) { [[1, 10], [2, 6], [3, 5], [7, 9]] }
+      let(:expected) { [[1, 10]] }
+      it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
+    end
+
+    describe 'test case 5' do
+      let(:meetings) { [[1, 3], [2, 4]] }
+      let(:expected) { [[1, 4]] }
+      it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
+    end
+  end
 end
