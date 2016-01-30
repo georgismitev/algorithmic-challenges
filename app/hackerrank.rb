@@ -1030,7 +1030,7 @@ class HackerRank
     condensed_meetings
   end
 
-  def self.bst_lca(tree, a, b)
+  def self.bst_lca_with_arrays(tree, a, b)
     node_a = tree.find_node(a)
     node_b = tree.find_node(b)
 
@@ -1062,7 +1062,22 @@ class HackerRank
     end
   end
 
-  def self.lca(tree)
+  def self.bst_lca(tree, a, b)
+    if tree.nil? || tree.find_node(a) == nil || tree.find_node(b) == nil
+      return -1
+    end
 
+    stack = [tree.root]
+
+    while !stack.empty? do
+      node = stack.pop
+      if a < node.value && b < node.value
+        stack.push(node.left)
+      elsif a > node.value && b > node.value
+        stack.push(node.right)
+      else
+        return node.value
+      end
+    end
   end
 end
