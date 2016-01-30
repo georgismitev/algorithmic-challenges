@@ -1157,4 +1157,49 @@ describe HackerRank do
       it { expect(HackerRank.condense_meetings(meetings)).to eq(expected) }
     end
   end
+
+  describe '.bst_lca' do
+    describe 'test case 1' do
+      let(:tree) do
+        t = Tree.new
+        t.add(20)
+        t.add(22)
+        t.add(8)
+        t.add(12)
+        t.add(4)
+        t.add(14)
+        t.add(10)
+        t
+      end
+
+      it { expect(HackerRank.bst_lca(tree.root, 10, 14)).to eq(12) }
+      it { expect(HackerRank.bst_lca(tree.root, 14, 8)).to eq(8) }
+      it { expect(HackerRank.bst_lca(tree.root, 10, 22)).to eq(20) }
+    end
+
+    describe 'test case 2' do
+      let(:tree) do
+        t = Tree.new
+        t.add(5)
+        t.add(3)
+        t.add(7)
+        t.add(1)
+        t.add(4)
+        t.add(6)
+        t.add(10)
+        t.add(8)
+        t
+      end
+
+      it { expect(HackerRank.bst_lca(tree.root, 6, 8)).to eq(7) }
+      it { expect(HackerRank.bst_lca(tree.root, 1, 8)).to eq(5) }
+      it { expect(HackerRank.bst_lca(tree.root, 10, 4)).to eq(5) }
+      it { expect(HackerRank.bst_lca(tree.root, 10, 6)).to eq(7) }
+      it { expect(HackerRank.bst_lca(tree.root, 10, 8)).to eq(10) }
+      it { expect(HackerRank.bst_lca(tree.root, 10, 11)).to eq(-1) }
+    end
+  end
+
+  describe '.lca' do
+  end
 end
