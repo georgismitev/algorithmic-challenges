@@ -29,6 +29,26 @@ class Tree
     end
   end
 
+  def find_node(value, node = root)
+    if value == node.value
+      node
+    else
+      if value > node.value
+        unless node.right.nil?
+          find_node(value, node.right)
+        else
+          nil
+        end
+      else
+        unless node.left.nil?
+          find_node(value, node.left)
+        else
+          nil
+        end
+      end
+    end
+  end
+
   private
 
   def empty?

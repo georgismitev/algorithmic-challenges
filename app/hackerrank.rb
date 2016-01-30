@@ -1030,45 +1030,23 @@ class HackerRank
     condensed_meetings
   end
 
-  def self.find_node(node, value)
-    if value == node.value
-      node
-    else
-      if value > node.value
-        unless node.right.nil?
-          find_node(node.right, value)
-        else
-          nil
-        end
-      else
-        unless node.left.nil?
-          find_node(node.left, value)
-        else
-          nil
-        end
-      end
-    end
-  end
-
-  def self.bst_lca(root, a, b)
-    node_a = find_node(root, a)
-    node_b = find_node(root, b)
+  def self.bst_lca(tree, a, b)
+    node_a = tree.find_node(a)
+    node_b = tree.find_node(b)
 
     return -1 if node_a == nil || node_b == nil
 
     patha = []
-    while node_a != root do
+    while !node_a.nil? do
       patha.push(node_a)
       node_a = node_a.parent
     end
-    patha.push(root)
 
     pathb = []
-    while node_b != root do
+    while !node_b.nil? do
       pathb.push(node_b)
       node_b = node_b.parent
     end
-    pathb.push(root)
 
     i = patha.length - 1
     j = pathb.length - 1

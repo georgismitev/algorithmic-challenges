@@ -1172,9 +1172,9 @@ describe HackerRank do
         t
       end
 
-      it { expect(HackerRank.bst_lca(tree.root, 10, 14)).to eq(12) }
-      it { expect(HackerRank.bst_lca(tree.root, 14, 8)).to eq(8) }
-      it { expect(HackerRank.bst_lca(tree.root, 10, 22)).to eq(20) }
+      it { expect(HackerRank.bst_lca(tree, 10, 14)).to eq(12) }
+      it { expect(HackerRank.bst_lca(tree, 14, 8)).to eq(8) }
+      it { expect(HackerRank.bst_lca(tree, 10, 22)).to eq(20) }
     end
 
     describe 'test case 2' do
@@ -1191,12 +1191,12 @@ describe HackerRank do
         t
       end
 
-      it { expect(HackerRank.bst_lca(tree.root, 6, 8)).to eq(7) }
-      it { expect(HackerRank.bst_lca(tree.root, 1, 8)).to eq(5) }
-      it { expect(HackerRank.bst_lca(tree.root, 10, 4)).to eq(5) }
-      it { expect(HackerRank.bst_lca(tree.root, 10, 6)).to eq(7) }
-      it { expect(HackerRank.bst_lca(tree.root, 10, 8)).to eq(10) }
-      it { expect(HackerRank.bst_lca(tree.root, 10, 11)).to eq(-1) }
+      it { expect(HackerRank.bst_lca(tree, 6, 8)).to eq(7) }
+      it { expect(HackerRank.bst_lca(tree, 1, 8)).to eq(5) }
+      it { expect(HackerRank.bst_lca(tree, 10, 4)).to eq(5) }
+      it { expect(HackerRank.bst_lca(tree, 10, 6)).to eq(7) }
+      it { expect(HackerRank.bst_lca(tree, 10, 8)).to eq(10) }
+      it { expect(HackerRank.bst_lca(tree, 10, 11)).to eq(-1) }
     end
   end
 
