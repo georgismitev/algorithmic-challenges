@@ -1199,7 +1199,4 @@ describe HackerRank do
       it { expect(HackerRank.bst_lca(tree, 10, 11)).to eq(-1) }
     end
   end
-
-  describe '.lca' do
-  end
 end
