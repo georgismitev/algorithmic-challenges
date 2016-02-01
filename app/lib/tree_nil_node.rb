@@ -1,4 +1,5 @@
 require 'singleton'
+require_relative 'tree_node'
 
 class TreeNilNode < TreeNode
   include Singleton

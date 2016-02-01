@@ -1,3 +1,5 @@
+require_relative 'tree'
+
 class BstTree < Tree
   def add(value, node = root)
     if empty?
