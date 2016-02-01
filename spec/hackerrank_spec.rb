@@ -1199,4 +1199,12 @@ describe HackerRank do
       it { expect(HackerRank.bst_lca(tree, 10, 11)).to eq(-1) }
     end
   end
+
+  describe '.xor_se' do
+    it { expect(HackerRank.xor_se(2, 4)).to eq(7) }
+    it { expect(HackerRank.xor_se(2, 8)).to eq(9) }
+    it { expect(HackerRank.xor_se(5, 9)).to eq(15) }
+    it { expect(HackerRank.xor_se(3, 8)).to eq(10) }
+    it { expect(HackerRank.xor_se(8, 10)).to eq(2) }
+  end
 end
