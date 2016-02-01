@@ -1161,7 +1161,7 @@ describe HackerRank do
   describe '.bst_lca' do
     describe 'test case 1' do
       let(:tree) do
-        t = Tree.new
+        t = BstTree.new
         t.add(20)
         t.add(22)
         t.add(8)
@@ -1179,7 +1179,7 @@ describe HackerRank do
 
     describe 'test case 2' do
       let(:tree) do
-        t = Tree.new
+        t = BstTree.new
         t.add(5)
         t.add(3)
         t.add(7)
