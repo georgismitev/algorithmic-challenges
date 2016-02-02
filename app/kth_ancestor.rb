@@ -29,7 +29,9 @@ class KthAncestorTree
     @tree_structure[0] = root_node
     @root = root_node
     @initial_size = size
-    @jump_pointers = Array.new(MAX_NODES) { Array.new(MAX_JUMP_LEVEL) }
+    @jump_pointers = Array.new(MAX_NODES) do
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    end
     @logn = (Math.log2(size) + 1).to_i
   end
 
@@ -64,28 +66,26 @@ class KthAncestorTree
 
   def query(node, kthparent)
     if @tree_structure[node]
-      parent = node
+      level = 0
 
       while kthparent > 0 do
-        parent = @tree_structure[parent].parent
-        kthparent -= 1
-        return 0 if parent == 0 && kthparent > 0
+        node = @jump_pointers[node][level] if kthparent & 1 == 1
+        kthparent >>= 1
+        level += 1
       end
 
-      parent
+      node || 0
     else
       0
     end
   end
 
-  def build_all_jump_pointers
+  def build_jump_pointers
     i = 1
     while i < @logn do
-      @tree_structure.keys.each do |j|
-        next if j == 0
-        parent = @tree_structure[j].parent
-        parent_parent = @jump_pointers[parent][i - 1] || 0
-        @jump_pointers[j][i] = @jump_pointers[parent_parent][i - 1] 
+      @tree_structure.keys.each do |node|
+        parent = @jump_pointers[node][i - 1]
+        @jump_pointers[node][i] = @jump_pointers[parent][i - 1]
       end
       i += 1
     end
@@ -96,15 +96,14 @@ class KthAncestorTree
   def update_jump_pointers(node)
     i = 1
     while i < @logn do
-      parent = @tree_structure[node].parent
-      parent_parent = @jump_pointers[parent][i - 1] || 0
-      @jump_pointers[node][i] = @jump_pointers[parent_parent][i - 1]
+      parent = @jump_pointers[node][i - 1]
+      @jump_pointers[node][i] = @jump_pointers[parent][i - 1]
       i += 1
     end
   end
 
   def remove_jump_pointers(node)
-    @jump_pointers[node] = Array.new(MAX_JUMP_LEVEL)
+    @jump_pointers[node] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   end
 end
 
@@ -112,7 +111,8 @@ gets.to_i.times do
   nodes = gets.to_i
   tree = KthAncestorTree.new(nodes)
   nodes.times { tree.initial_add(*(gets.strip.split.map(&:to_i))) }
-  tree.build_all_jump_pointers
+  tree.build_jump_pointers
+  result = []
   gets.to_i.times do |i|
     query = gets.strip.split.map(&:to_i)
     if query[0] == 0
