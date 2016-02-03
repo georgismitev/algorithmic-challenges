@@ -1,5 +1,3 @@
-require 'pry'
-
 MAX = 41
 
 def self.esieve
