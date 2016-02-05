@@ -1207,4 +1207,36 @@ describe HackerRank do
     it { expect(HackerRank.xor_se(3, 8)).to eq(10) }
     it { expect(HackerRank.xor_se(8, 10)).to eq(2) }
   end
+
+  describe '.candies' do
+    describe 'test case 1' do
+      let(:ratings) { [1, 2, 2] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(4) }
+    end
+
+    describe 'test case 2' do
+      let(:ratings) { [1, 2] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(3) }
+    end
+
+    describe 'test case 3' do
+      let(:ratings) { [2, 4, 2, 6, 1, 7, 8, 9, 2, 1] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(19) }
+    end
+
+    describe 'test case 4' do
+      let(:ratings) { [2, 4, 6, 7, 8, 9, 1] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(22) }
+    end
+
+    describe 'test case 5' do
+      let(:ratings) { [10] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(1) }
+    end
+
+    describe 'test case 5' do
+      let(:ratings) { [10, 11, 1] }
+      it { expect(HackerRank.candies(ratings.length, ratings)).to eq(4) }
+    end
+  end
 end
