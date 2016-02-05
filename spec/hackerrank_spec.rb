@@ -1239,4 +1239,116 @@ describe HackerRank do
       it { expect(HackerRank.candies(ratings.length, ratings)).to eq(4) }
     end
   end
+
+  describe '.unbounded_knapsack_sum' do
+    let(:knapsack_sum) { HackerRank.unbounded_knapsack_sum(array, max_amount) }
+
+    describe 'test case 1' do
+      let(:array) { [1, 6, 9] }
+      let(:max_amount) { 12 }
+      it { expect(knapsack_sum).to eq(12) }
+    end
+
+    describe 'test case 2' do
+      let(:array) { [3, 4, 4, 4, 8] }
+      let(:max_amount) { 9 }
+      it { expect(knapsack_sum).to eq(9) }
+    end
+
+    describe 'test case 3' do
+      let(:array) { [4, 4, 4, 4, 8] }
+      let(:max_amount) { 9 }
+      it { expect(knapsack_sum).to eq(8) }
+    end
+
+    describe 'test case 4' do
+      let(:max_amount) { 9 }
+      let(:array) { [3, 2, 4] }
+      it { expect(knapsack_sum).to eq(9) }
+    end
+
+    describe 'test case 5' do
+      let(:max_amount) { 12 }
+      let(:array) { [3, 10, 4] }
+      it { expect(knapsack_sum).to eq(12) }
+    end
+
+    describe 'test case 6' do
+      let(:max_amount) { 13 }
+      let(:array) { [3, 10, 4] }
+      it { expect(knapsack_sum).to eq(13) }
+    end
+
+    describe 'test case 7' do
+      let(:max_amount) { 16 }
+      let(:array) { [3, 10, 4] }
+      it { expect(knapsack_sum).to eq(16) }
+    end
+
+    describe 'test case 8' do
+      let(:max_amount) { 2000 }
+      let(:array) { [2000, 2000, 2000] }
+      it { expect(knapsack_sum).to eq(2000) }
+    end
+
+    describe 'test case 9' do
+      let(:max_amount) { 9 }
+      let(:array) { [9, 9, 9] }
+      it { expect(knapsack_sum).to eq(9) }
+    end
+
+    describe 'test case 10' do
+      let(:max_amount) { 8 }
+      let(:array) { [9, 9, 9] }
+      it { expect(knapsack_sum).to eq(0) }
+    end
+
+    describe 'test case 11' do
+      let(:max_amount) { 6 }
+      let(:array) { [5] }
+      it { expect(knapsack_sum).to eq(5) }
+    end
+
+    describe 'test case 12' do
+      let(:max_amount) { 8 }
+      let(:array) { [3, 3, 3, 3, 3, 3] }
+      it { expect(knapsack_sum).to eq(6) }
+    end
+
+    describe 'test case 13' do
+      let(:max_amount) { 10 }
+      let(:array) { [9, 4, 4, 9, 4, 9, 9, 9, 9] }
+      it { expect(knapsack_sum).to eq(9) }
+    end
+
+    describe 'test case 14' do
+      let(:max_amount) { 2000 }
+      let(:array) { [1] }
+      it { expect(knapsack_sum).to eq(2000) }
+    end
+
+    describe 'test case 15' do
+      let(:max_amount) { 10 }
+      let(:array) { [5, 9] }
+      it { expect(knapsack_sum).to eq(10) }
+    end
+
+    describe 'test case 16' do
+      let(:max_amount) { 2000 }
+      let(:array) { [2, 1] }
+      it { expect(knapsack_sum).to eq(2000) }
+    end
+
+    describe 'test case 17' do
+      let(:max_amount) { 2000 }
+      let(:array) { [1999, 1999] }
+      it { expect(knapsack_sum).to eq(1999) }
+    end
+
+    describe 'test case 18' do
+      let(:max_amount) { 3 }
+      let(:array) { [4, 4, 5] }
+      it { expect(knapsack_sum).to eq(0) }
+    end
+  end
 end
