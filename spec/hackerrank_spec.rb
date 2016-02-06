@@ -1351,4 +1351,40 @@ describe HackerRank do
       it { expect(knapsack_sum).to eq(0) }
     end
   end
+
+  describe '.red_john_is_back' do
+    it { expect(HackerRank.red_john_is_back(1)).to eq(0) }
+    it { expect(HackerRank.red_john_is_back(3)).to eq(0) }
+    it { expect(HackerRank.red_john_is_back(4)).to eq(1) }
+    it { expect(HackerRank.red_john_is_back(5)).to eq(2) }
+    it { expect(HackerRank.red_john_is_back(6)).to eq(2) }
+    it { expect(HackerRank.red_john_is_back(7)).to eq(3) }
+    it { expect(HackerRank.red_john_is_back(8)).to eq(4) }
+    it { expect(HackerRank.red_john_is_back(9)).to eq(4) }
+    it { expect(HackerRank.red_john_is_back(10)).to eq(6) }
+    it { expect(HackerRank.red_john_is_back(12)).to eq(9) }
+    it { expect(HackerRank.red_john_is_back(13)).to eq(11) }
+    it { expect(HackerRank.red_john_is_back(14)).to eq(15) }
+    it { expect(HackerRank.red_john_is_back(15)).to eq(19) }
+    it { expect(HackerRank.red_john_is_back(16)).to eq(24) }
+    it { expect(HackerRank.red_john_is_back(17)).to eq(32) }
+    it { expect(HackerRank.red_john_is_back(18)).to eq(42) }
+    it { expect(HackerRank.red_john_is_back(19)).to eq(53) }
+    it { expect(HackerRank.red_john_is_back(21)).to eq(91) }
+    it { expect(HackerRank.red_john_is_back(23)).to eq(155) }
+    it { expect(HackerRank.red_john_is_back(25)).to eq(269) }
+    it { expect(HackerRank.red_john_is_back(24)).to eq(204) }
+    it { expect(HackerRank.red_john_is_back(26)).to eq(354) }
+    it { expect(HackerRank.red_john_is_back(27)).to eq(462) }
+    it { expect(HackerRank.red_john_is_back(28)).to eq(615) }
+    it { expect(HackerRank.red_john_is_back(30)).to eq(1077) }
+    it { expect(HackerRank.red_john_is_back(31)).to eq(1432) }
+    it { expect(HackerRank.red_john_is_back(34)).to eq(3385) }
+    it { expect(HackerRank.red_john_is_back(35)).to eq(4522) }
+    it { expect(HackerRank.red_john_is_back(36)).to eq(6048) }
+    it { expect(HackerRank.red_john_is_back(37)).to eq(8078) }
+    it { expect(HackerRank.red_john_is_back(38)).to eq(10794) }
+    it { expect(HackerRank.red_john_is_back(39)).to eq(14475) }
+    it { expect(HackerRank.red_john_is_back(40)).to eq(19385) }
+  end
 end
