@@ -1,5 +1,3 @@
-require 'set'
-
 def self.find_divisors(n)
   divisors = SortedSet.new
   divisors.add(1)

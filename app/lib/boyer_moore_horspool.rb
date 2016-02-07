@@ -19,7 +19,6 @@ class BoyerMooreHorspool
     i = pattern.length - 1
     while i < text.length do
       j = 0
-      mismatch = 0
 
       while j < pattern.length do
         break if text[i - j] != pattern[pattern.length - j - 1]

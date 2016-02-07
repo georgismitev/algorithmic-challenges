@@ -339,31 +339,31 @@ describe HackerRank do
   describe '.build_list' do
     describe 'test case 1' do
       let(:string) { 'abc' }
-      let(:result) { ['a', 'ab', 'abc', 'ac', 'b', 'bc', 'c'] }
-      it { expect(HackerRank.build_list(string)).to eq(result) }
+      let(:list) { ['a', 'ab', 'abc', 'ac', 'b', 'bc', 'c'] }
+      it { expect(HackerRank.build_list(string)).to eq(list) }
     end
 
     describe 'test case 2' do
       let(:string) { 'ab' }
-      let(:result) { ['a', 'ab', 'b'] }
-      it { expect(HackerRank.build_list(string)).to eq(result) }
+      let(:list) { ['a', 'ab', 'b'] }
+      it { expect(HackerRank.build_list(string)).to eq(list) }
     end
 
     describe 'test case 3' do
       let(:string) { 'xyz' }
-      let(:result) { ['x', 'xy', 'xyz', 'xz', 'y', 'yz', 'z'] }
-      it { expect(HackerRank.build_list(string)).to eq(result) }
+      let(:list) { ['x', 'xy', 'xyz', 'xz', 'y', 'yz', 'z'] }
+      it { expect(HackerRank.build_list(string)).to eq(list) }
     end
 
     describe 'test case 1' do
       let(:string) { 'a' }
-      let(:result) { ['a'] }
-      it { expect(HackerRank.build_list(string)).to eq(result) }
+      let(:list) { ['a'] }
+      it { expect(HackerRank.build_list(string)).to eq(list) }
     end
 
     describe 'test case 5' do
       let(:string) { 'abcd' }
-      let(:result) do
+      let(:list) do
         [
           'a', 'ab', 'abc', 'abcd', 'abd', 'ac', 'acd', 'ad',
           'b', 'bc', 'bcd', 'bd',
@@ -371,7 +371,7 @@ describe HackerRank do
           'd'
         ]
       end
-      it { expect(HackerRank.build_list(string)).to eq(result) }
+      it { expect(HackerRank.build_list(string)).to eq(list) }
     end
   end
 
@@ -1107,22 +1107,22 @@ describe HackerRank do
     describe 'test case 1' do
       let(:array) { [1, 7, 3, 4] }
       let(:expected_array) { [84, 12, 28, 21] }
-      let(:result) { HackerRank.product_of_other_numbers(array) }
-      it { expect(result).to eq(expected_array) }
+      let(:product) { HackerRank.product_of_other_numbers(array) }
+      it { expect(product).to eq(expected_array) }
     end
 
     describe 'test case 2' do
       let(:array) { [1, 2, 6, 5, 9] }
       let(:expected_array) { [540, 270, 90, 108, 60] }
-      let(:result) { HackerRank.product_of_other_numbers(array) }
-      it { expect(result).to eq(expected_array) }
+      let(:product) { HackerRank.product_of_other_numbers(array) }
+      it { expect(product).to eq(expected_array) }
     end
 
     describe 'test case 3' do
       let(:array) { [1, 7, 3, 0, 4] }
       let(:expected_array) { [0, 0, 0, 84, 0] }
-      let(:result) { HackerRank.product_of_other_numbers(array) }
-      it { expect(result).to eq(expected_array) }
+      let(:product) { HackerRank.product_of_other_numbers(array) }
+      it { expect(product).to eq(expected_array) }
     end
   end
 

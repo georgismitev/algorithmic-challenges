@@ -3,7 +3,6 @@ class CreateSuffixArrayWithSorting
   def self.from(string)
     i = 0
     suffixes = []
-    suffix_positions = { }
     char = 'A'.ord
 
     while i < string.size do

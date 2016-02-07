@@ -1,7 +1,3 @@
-require 'pry'
-require 'dotenv'
-Dotenv.load
-
 PRIME = 1038211
 BASE = 1000
 

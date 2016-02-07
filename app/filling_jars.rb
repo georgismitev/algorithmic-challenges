@@ -1,5 +1,4 @@
-input = gets.strip.split(' ').map(&:to_i)
-n, m = input[0], input[1]
+n, m = gets.strip.split(' ').map(&:to_i)
 total_jar_candies = 0
 m.times do
   list = gets.strip.split(' ').map(&:to_i)
