@@ -1234,4 +1234,49 @@ class HackerRank
 
     primes[dp[n]]
   end
+
+  def self.generate_primes_array(wanted_size = 1000, max_number = 10001)
+    sieve = Array.new(max_number) { 0 }
+    sieve[0] = 1
+    sieve[1] = 1
+    primes = []
+    
+    i = 2
+    while i < max_number && primes.length < wanted_size do
+      if sieve[i] == 0
+        primes.push(i)
+        j = i * i
+        while j < max_number do
+          sieve[j] = 1
+          j += i
+        end
+      end
+      i += 1
+    end
+
+    primes
+  end
+
+  def self.number_of_divisors(n, primes = generate_primes_array(100))
+    return 1 if n == 1
+    factors = 1
+    remainder = n
+
+    i = 0
+    while i < primes.length do
+      return factors * 2 if primes[i] * primes[i] > n
+
+      exponent = 1
+      while remainder % primes[i] == 0 do
+        exponent += 1
+        remainder /= primes[i]
+      end
+
+      factors *= exponent
+      return factors if remainder == 1
+      i += 1
+    end
+
+    factors
+  end
 end

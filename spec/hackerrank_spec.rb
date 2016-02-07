@@ -1387,4 +1387,16 @@ describe HackerRank do
     it { expect(HackerRank.red_john_is_back(39)).to eq(14475) }
     it { expect(HackerRank.red_john_is_back(40)).to eq(19385) }
   end
+
+  describe '.number_of_divisors' do
+    it { expect(HackerRank.number_of_divisors(1)).to eq(1) }
+    it { expect(HackerRank.number_of_divisors(3)).to eq(2) }
+    it { expect(HackerRank.number_of_divisors(6)).to eq(4) }
+    it { expect(HackerRank.number_of_divisors(10)).to eq(4) }
+    it { expect(HackerRank.number_of_divisors(15)).to eq(4) }
+    it { expect(HackerRank.number_of_divisors(21)).to eq(4) }
+    it { expect(HackerRank.number_of_divisors(28)).to eq(6) }
+    it { expect(HackerRank.number_of_divisors(48)).to eq(10) }
+    it { expect(HackerRank.number_of_divisors(842161320)).to eq(1024) }
+  end
 end
