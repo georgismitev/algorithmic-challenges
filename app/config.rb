@@ -3,8 +3,6 @@ BASE = 1000
 
 require 'set'
 
-Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each do |f|
-  require f
-end
+Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
 require_relative 'hackerrank'
