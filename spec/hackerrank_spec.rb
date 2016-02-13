@@ -1399,4 +1399,46 @@ describe HackerRank do
     it { expect(HackerRank.number_of_divisors(48)).to eq(10) }
     it { expect(HackerRank.number_of_divisors(842161320)).to eq(1024) }
   end
+
+  describe '.counting_sundays' do
+    describe 'test case 1' do
+      let(:params) { [1900, 1, 1, 1910, 1, 1] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(18) }
+    end
+
+    describe 'test case 2' do
+      let(:params) { [2000, 1, 1, 2020, 1, 1] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(35) }
+    end
+
+    describe 'test case 3' do
+      let(:params) { [1988, 3, 25, 1989, 7, 13] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(2) }
+    end
+
+    describe 'test case 4' do
+      let(:params) { [1924, 6, 6, 1925, 6, 16] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(2) }
+    end
+
+    describe 'test case 5' do
+      let(:params) { [1000000000000, 2, 2, 1000000001000, 3, 2] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(1720) }
+    end
+
+    describe 'test case 6' do
+      let(:params) { [2015, 2, 1, 2015, 3, 1] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(2) }
+    end
+
+    describe 'test case 7' do
+      let(:params) { [1925, 2, 1, 1925, 3, 1] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(2) }
+    end
+
+    describe 'test case 8' do
+      let(:params) { [1901, 1, 1, 1910, 12, 31] }
+      it { expect(HackerRank.counting_sundays(*params)).to eq(17) }
+    end
+  end
 end
