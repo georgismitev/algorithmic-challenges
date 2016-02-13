@@ -1441,4 +1441,15 @@ describe HackerRank do
       it { expect(HackerRank.counting_sundays(*params)).to eq(17) }
     end
   end
+
+  describe '.lpermutation' do
+    it { expect(HackerRank.lpermutation('abc', 1)).to eq('abc') }
+    it { expect(HackerRank.lpermutation('abc', 2)).to eq('acb') }
+    it { expect(HackerRank.lpermutation('abc', 3)).to eq('bac') }
+    it { expect(HackerRank.lpermutation('abc', 4)).to eq('bca') }
+    it { expect(HackerRank.lpermutation('abc', 5)).to eq('cab') }
+    it { expect(HackerRank.lpermutation('abc', 6)).to eq('cba') }
+    it { expect(HackerRank.lpermutation('abcdefghijklm', 1)).to eq('abcdefghijklm') }
+    it { expect(HackerRank.lpermutation('abcdefghijklm', 2)).to eq('abcdefghijkml') }
+  end
 end
