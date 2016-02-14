@@ -1452,4 +1452,43 @@ describe HackerRank do
     it { expect(HackerRank.lpermutation('abcdefghijklm', 1)).to eq('abcdefghijklm') }
     it { expect(HackerRank.lpermutation('abcdefghijklm', 2)).to eq('abcdefghijkml') }
   end
+
+  describe '.coprime?' do
+    it { expect(HackerRank.coprime?(14, 21)).to be(false) }
+    it { expect(HackerRank.coprime?(14, 2)).to be(false) }
+    it { expect(HackerRank.coprime?(2, 5)).to be(true) }
+    it { expect(HackerRank.coprime?(2, 6)).to be(false) }
+    it { expect(HackerRank.coprime?(2, 7)).to be(true) }
+    it { expect(HackerRank.coprime?(2, 4)).to be(false) }
+    it { expect(HackerRank.coprime?(7, 9)).to be(true) }
+    it { expect(HackerRank.coprime?(12, 9)).to be(false) }
+    it { expect(HackerRank.coprime?(4, 7)).to be(true) }
+    it { expect(HackerRank.coprime?(12, 5)).to be(true) }
+  end
+
+  describe '.wildcard_match?' do
+    # * - 0 or more characters
+    # ? - one character
+    it { expect(HackerRank.wildcard_match?('a*b', 'ab')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'aab')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'acb')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'axyb')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'b')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'a')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'ac')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a*b', 'abc')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'aab')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'abb')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'acb')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'ab')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'b')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('a?b', 'cb')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'xayz')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'xaybcz')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'xaylmnz')).to be(true) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'xyz')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'ayz')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('x?y*z', 'xaz')).to be(false) }
+    it { expect(HackerRank.wildcard_match?('*y*z', 'xayasdfz')).to be(true) }
+  end
 end

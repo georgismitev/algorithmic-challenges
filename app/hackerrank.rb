@@ -1384,4 +1384,48 @@ class HackerRank
 
     permutation.join
   end
+
+  def self.coprime?(a, b)
+    gcd(a, b) == 1
+  end
+
+  def self.wildcard_match?(pattern, string)
+    dp = Array.new(string.length + 1) { Array.new(pattern.length + 1) }
+    dp[0][0] = true
+
+    j = 1
+    while pattern[j - 1] == '*' && j <= pattern.length do
+      dp[0][j] = true
+      j += 1
+    end
+
+    while j <= pattern.length do
+      dp[0][j] = false
+      j += 1
+    end
+
+    i = 1
+    while i <= string.length do
+      dp[i][0] = false
+      i += 1
+    end
+
+    i = 1
+    while i <= string.length do
+      j = 1
+      while j <= pattern.length do
+        if string[i - 1] == pattern[j - 1] || pattern[j - 1] == '?'
+          dp[i][j] = dp[i - 1][j - 1]
+        elsif pattern[j - 1] == '*'
+          dp[i][j] = dp[i - 1][j] || dp[i][j - 1]
+        else
+          dp[i][j] = false
+        end
+        j += 1
+      end
+      i += 1
+    end
+
+    dp[string.length][pattern.length]
+  end
 end
