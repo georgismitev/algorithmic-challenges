@@ -1498,4 +1498,13 @@ describe HackerRank do
     it { expect(HackerRank.coin_sums(15, coins)).to eq(22) }
     it { expect(HackerRank.coin_sums(20, coins)).to eq(41) }
   end
+
+  describe '.fix_the_cycles' do
+    it { expect(HackerRank.fix_the_cycles(2, -5, 0, 1, 1, 1)).to eq(2) }
+    it { expect(HackerRank.fix_the_cycles(2, 5, 0, 1, 1, 1)).to eq(0) }
+    it { expect(HackerRank.fix_the_cycles(0, 0, 0, 0, 0, 0)).to eq(0) }
+    it { expect(HackerRank.fix_the_cycles(-1, -1, -1, -1, -1, -1)).to eq(4) }
+    it { expect(HackerRank.fix_the_cycles(-20, -20, -20, -20, -20, -20)).to eq(80) }
+    it { expect(HackerRank.fix_the_cycles(-1, 1, -1, 1, -1, 1)).to eq(1) }
+  end
 end
