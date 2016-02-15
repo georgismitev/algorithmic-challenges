@@ -1491,4 +1491,11 @@ describe HackerRank do
     it { expect(HackerRank.wildcard_match?('x?y*z', 'xaz')).to be(false) }
     it { expect(HackerRank.wildcard_match?('*y*z', 'xayasdfz')).to be(true) }
   end
+
+  describe '.coin_sums' do
+    let(:coins) { [1, 2, 5, 10, 20, 50, 100, 200] }
+    it { expect(HackerRank.coin_sums(10, coins)).to eq(11) }
+    it { expect(HackerRank.coin_sums(15, coins)).to eq(22) }
+    it { expect(HackerRank.coin_sums(20, coins)).to eq(41) }
+  end
 end

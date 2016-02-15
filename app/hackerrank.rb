@@ -1428,4 +1428,36 @@ class HackerRank
 
     dp[string.length][pattern.length]
   end
+
+  def self.coin_sums(sum, coins)
+    dp = Array.new(sum + 1) { Array.new(coins.length + 1) }
+    dp[0] = Array.new(coins.length + 1) { 1 }
+    dp[1] = Array.new(coins.length + 1) { 1 }
+
+    i = 2
+    while i <= sum do
+      dp[i][0] = 1
+      dp[i][1] = 1
+      i += 1
+    end
+
+    i = 2
+    while i <= sum do
+      j = 2
+      while j <= coins.length do
+        if coins[j - 1] == i
+          dp[i][j] = [dp[i][j - 1], dp[i - 1][j]].max + 1
+        elsif coins[j - 1] <= i
+          dp[i][j] = dp[i][j - 1] + dp[i - coins[j - 1]][j]
+        else
+          dp[i][j] = dp[i][j - 1]
+        end
+        j += 1
+      end
+
+      i += 1
+    end
+
+    dp[sum][coins.length]
+  end
 end
