@@ -1507,4 +1507,24 @@ describe HackerRank do
     it { expect(HackerRank.fix_the_cycles(-20, -20, -20, -20, -20, -20)).to eq(80) }
     it { expect(HackerRank.fix_the_cycles(-1, 1, -1, 1, -1, 1)).to eq(1) }
   end
+
+  describe '.two_robots' do
+    describe 'test case 1' do
+      let(:m) { 5 }
+      let(:queries) { [[1, 5], [3, 2], [4, 1], [2, 4]] }
+      it { expect(HackerRank.two_robots(queries, m)).to eq(11) }
+    end
+
+    describe 'test case 2' do
+      let(:m) { 4 }
+      let(:queries) { [[1, 2], [4, 3]] }
+      it { expect(HackerRank.two_robots(queries, m)).to eq(2) }
+    end
+
+    describe 'test case 3' do
+      let(:m) { 10 }
+      let(:queries) { [[2, 4], [5, 4], [9, 8]] }
+      it { expect(HackerRank.two_robots(queries, m)).to eq(5) }
+    end
+  end
 end
