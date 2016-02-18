@@ -32,16 +32,14 @@ def self.generate_scalar_products(vectors, n, multiplications)
   scalar_products = []
   max_index = n
 
-  if n >= 10000
-    first = vectors[0]
-    i = 1
-    while i < n do
-      if vectors[i] == first
-        max_index = i + 1
-        break
-      end
-      i += 1
+  first = vectors[0]
+  i = 1
+  while i < n do
+    if vectors[i] == first
+      max_index = i + 1
+      break
     end
+    i += 1
   end
 
   i = 0
