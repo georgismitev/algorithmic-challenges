@@ -1,31 +1,29 @@
-def self.generate_sequence(n, c, mod)
+def self.generate_sequence_and_vectors(n, c, mod)
   max = 2 * n + 2
   sequence = Array.new(max)
   sequence[0] = 0
   sequence[1] = c
-
-  i = 2
-  while i < max do
-    sequence[i] = (sequence[i - 1] + sequence[i - 2]) % mod
-    i += 1
-  end
-
-  sequence
-end
-
-def self.generate_vectors(n, sequence)
   vectors = Array.new(n)
   multiplications = Array.new(n)
 
-  i = 1
-  while i <= n do
-    twoi = 2 * i
-    vectors[i - 1] = [sequence[twoi], sequence[twoi + 1]]
-    multiplications[i - 1] = vectors[i - 1][0] * vectors[i - 1][1]
+  vector = nil
+  i = 2
+  k = 0
+  while i < max do
+    sequence[i] = (sequence[i - 1] + sequence[i - 2]) % mod
+
+    if i % 2 == 1 # verify edge cases
+      vectors[k] = [sequence[i - 1], sequence[i]]
+      multiplications[k] = sequence[i - 1] * sequence[i]
+      vector = vectors[k] if k == 0
+      break if vectors[k] == vector && k > 0
+      k += 1
+    end
+
     i += 1
   end
 
-  return vectors, multiplications
+  return sequence, vectors, multiplications
 end
 
 def self.generate_scalar_products(vectors, n, multiplications)
@@ -43,9 +41,9 @@ def self.generate_scalar_products(vectors, n, multiplications)
   end
 
   i = 0
-  while i < max_index do
+  while i < max_index && vectors[i] do
     j = i + 1
-    while j < max_index do
+    while j < max_index && vectors[j] do
       if i != j
         scalar_products.push((vectors[i][0] + vectors[j][1]) * (vectors[i][1] + vectors[j][0]) - (multiplications[i] + multiplications[j]))
       end
@@ -70,7 +68,6 @@ def self.find_residue(scalar_products, mod)
 end
 
 c, mod, n = gets.strip.split.map(&:to_i)
-sequence = generate_sequence(n, c, mod)
-vectors, multiplications = generate_vectors(n, sequence)
+sequence, vectors, multiplications = generate_sequence_and_vectors(n, c, mod)
 scalar_products = generate_scalar_products(vectors, n, multiplications)
 puts find_residue(scalar_products, mod)
