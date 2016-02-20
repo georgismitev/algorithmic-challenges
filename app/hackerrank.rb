@@ -1468,4 +1468,74 @@ class HackerRank
     min = [acda, abcda, abda].select { |e| e < 0 }.min
     min.nil? ? 0 : min * -1
   end
+
+  def self.check_diary(spots)
+    stack = []
+    visited = {}
+    milos_diary = true
+    previous_spot = spots[0]
+
+    i = 1
+    while i < spots[0] do
+      stack.push(i)
+      visited[i] = 1
+      i += 1
+    end
+
+    i = 1
+    while i < spots.length && milos_diary do
+      if spots[i] > previous_spot
+        j = previous_spot + 1
+        while j < spots[i] do
+          unless visited[j]
+            stack.push(j)
+            visited[j] = 1
+          end
+          j += 1
+        end
+        previous_spot = spots[i]
+      elsif
+        if stack.last == spots[i]
+          stack.pop
+        else
+          milos_diary = false
+        end
+      end
+      i += 1
+    end
+
+    milos_diary
+  end
+
+  def self.lottery(input)
+    t, h = input[0]
+    ticket_sets = SortedSet.new
+    hotels = Array.new(h + 1) { {} }
+    hotel_sets = Hash.new { |h, k| h[k] = {} }
+    hotels_to_pay = h
+
+    t.times do |i|
+      list = input[i + 1]
+      list[1..-1].each do |hotel|
+        hotels[hotel][i + 1] = 1
+        number_of_tickets = hotels[hotel].size
+        hotel_sets[number_of_tickets][hotel] = 1
+        hotel_sets[number_of_tickets - 1].delete(hotel) if number_of_tickets > 1
+        ticket_sets.add(number_of_tickets)
+      end
+    end
+
+    used_tickets = {}
+
+    ticket_sets.each do |ticket_total|
+      hotel_sets[ticket_total].each_pair do |hotel, _|
+        hotels[hotel].each_pair do |ticket, _|
+          next if used_tickets[ticket]
+          used_tickets[ticket] = 1 
+        end
+      end
+    end
+
+    hotels_to_pay - used_tickets.keys.length
+  end
 end

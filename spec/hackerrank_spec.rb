@@ -1508,7 +1508,7 @@ describe HackerRank do
     it { expect(HackerRank.fix_the_cycles(-1, 1, -1, 1, -1, 1)).to eq(1) }
   end
 
-  describe '.two_robots' do
+  describe '.two_robots', :broken do
     describe 'test case 1' do
       let(:m) { 5 }
       let(:queries) { [[1, 5], [3, 2], [4, 1], [2, 4]] }
@@ -1525,6 +1525,190 @@ describe HackerRank do
       let(:m) { 10 }
       let(:queries) { [[2, 4], [5, 4], [9, 8]] }
       it { expect(HackerRank.two_robots(queries, m)).to eq(5) }
+    end
+  end
+
+  describe '.milos_diary' do
+    it { expect(HackerRank.check_diary([3, 4, 5, 2])).to eq(true) }
+    it { expect(HackerRank.check_diary([4, 2, 3, 1])).to eq(false) }
+    it { expect(HackerRank.check_diary([4, 1, 2, 3])).to eq(false) }
+    it { expect(HackerRank.check_diary([2, 4, 3, 5])).to eq(true) }
+  end
+
+  describe '.lottery' do
+    describe 'test case 1' do
+      let(:input) do
+        [
+          [2, 4],
+          [2, 1, 2],
+          [2, 1, 2],
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(2) }
+    end
+
+    describe 'test case 2' do
+      let(:input) do
+        [
+          [4, 4],
+          [1, 1],
+          [1, 2],
+          [1, 3],
+          [1, 4]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(0) }
+    end
+
+    describe 'test case 3' do
+      let(:input) do
+        [
+          [3, 4],
+          [3, 1, 2, 3],
+          [1, 1],
+          [1, 2]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
+    end
+
+    describe 'test case 4' do
+      let(:input) do
+        [
+          [2, 4],
+          [1, 1],
+          [1, 1],
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(2) }
+    end
+
+    describe 'test case 5' do
+      let(:input) do
+        [
+          [1, 4],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(3) }
+    end
+
+    describe 'test case 6' do
+      let(:input) do
+        [
+          [4, 5],
+          [4, 1, 2, 3, 4],
+          [4, 4, 3, 2, 1],
+          [4, 3, 4, 1, 2],
+          [4, 4, 1, 3, 2],
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
+    end
+
+    describe 'test case 7' do
+      let(:input) do
+        [
+          [5, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(0) }
+    end
+
+    describe 'test case 8' do
+      let(:input) do
+        [
+          [5, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5],
+          [5, 1, 2, 3, 4, 5]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(0) }
+    end
+
+    describe 'test case 9' do
+      let(:input) do
+        [
+          [5, 5],
+          [5, 1, 2, 3, 4, 5],
+          [4, 1, 2, 3, 4],
+          [3, 1, 2, 3],
+          [2, 1, 2],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(0) }
+    end
+
+    describe 'test case 10' do
+      let(:input) do
+        [
+          [5, 5],
+          [5, 1, 2, 3, 4, 5],
+          [4, 1, 2, 3, 4],
+          [3, 1, 2, 3],
+          [2, 1, 2],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(0) }
+    end
+
+    describe 'test case 11' do
+      let(:input) do
+        [
+          [2, 3],
+          [2, 1, 1],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
+    end
+
+    describe 'test case 12' do
+      let(:input) do
+        [
+          [2, 3],
+          [2, 1, 1],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
+    end
+
+    describe 'test case 13' do
+      let(:input) do
+        [
+          [5, 6],
+          [5, 1, 2, 3, 4, 5],
+          [4, 1, 2, 3, 4],
+          [3, 1, 2, 3],
+          [2, 1, 2],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
     end
   end
 end
