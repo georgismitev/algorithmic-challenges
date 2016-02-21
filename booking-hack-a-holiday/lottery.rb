@@ -1,10 +1,10 @@
 require 'set'
 
 t, h = gets.strip.split.map(&:to_i)
-ticket_sets = SortedSet.new
+ticket_counts = SortedSet.new
 hotels = Array.new(h + 1) { {} }
 hotel_sets = Hash.new { |h, k| h[k] = {} }
-hotels_to_pay = h
+used_tickets = {}
 
 t.times do |i|
   list = gets.strip.split.map(&:to_i)
@@ -13,19 +13,20 @@ t.times do |i|
     number_of_tickets = hotels[hotel].size
     hotel_sets[number_of_tickets][hotel] = 1
     hotel_sets[number_of_tickets - 1].delete(hotel) if number_of_tickets > 1
-    ticket_sets.add(number_of_tickets)
+    ticket_counts.add(number_of_tickets)
   end
 end
 
-used_tickets = {}
-
-ticket_sets.each do |ticket_total|
-  hotel_sets[ticket_total].each_pair do |hotel, _|
-    hotels[hotel].each_pair do |ticket, _|
+ticket_counts.each do |number_of_tickets|
+  hotel_sets[number_of_tickets].each_key do |hotel|
+    ticket_matched = false
+    hotels[hotel].each_key do |ticket|
+      break if ticket_matched
       next if used_tickets[ticket]
-      used_tickets[ticket] = 1
+      used_tickets[ticket] = hotel
+      ticket_matched = true
     end
   end
 end
 
-puts hotels_to_pay - used_tickets.keys.length
+puts h - used_tickets.keys.length

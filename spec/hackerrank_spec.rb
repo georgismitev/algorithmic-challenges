@@ -1584,7 +1584,7 @@ describe HackerRank do
         ]
       end
 
-      it { expect(HackerRank.lottery(input)).to eq(2) }
+      it { expect(HackerRank.lottery(input)).to eq(3) }
     end
 
     describe 'test case 5' do
@@ -1681,7 +1681,7 @@ describe HackerRank do
         ]
       end
 
-      it { expect(HackerRank.lottery(input)).to eq(1) }
+      it { expect(HackerRank.lottery(input)).to eq(2) }
     end
 
     describe 'test case 12' do
@@ -1693,7 +1693,7 @@ describe HackerRank do
         ]
       end
 
-      it { expect(HackerRank.lottery(input)).to eq(1) }
+      it { expect(HackerRank.lottery(input)).to eq(2) }
     end
 
     describe 'test case 13' do
@@ -1705,6 +1705,64 @@ describe HackerRank do
           [3, 1, 2, 3],
           [2, 1, 2],
           [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(1) }
+    end
+
+    describe 'test case 14' do
+      let(:input) do
+        [
+          [3, 3],
+          [2, 1, 1],
+          [1, 1],
+          [0]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(2) }
+    end
+
+    describe 'test case 15' do
+      let(:input) do
+        [
+          [6, 6],
+          [2, 1],
+          [1, 1],
+          [4, 1, 2, 3, 4],
+          [3, 1, 2, 3, 5],
+          [5, 1, 2, 3, 4, 6],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(2) }
+    end
+
+    describe 'test case 16' do
+      let(:input) do
+        [
+          [5, 6],
+          [2, 1],
+          [1, 1],
+          [4, 1, 2, 3, 4],
+          [3, 1, 2, 3, 5],
+          [5, 1, 2, 3, 4, 6],
+          [1, 1]
+        ]
+      end
+
+      it { expect(HackerRank.lottery(input)).to eq(2) }
+    end
+
+    describe 'test case 17' do
+      let(:input) do
+        [
+          [3, 4],
+          [2, 1, 2],
+          [2, 2, 3],
+          [2, 3, 4],
         ]
       end
 
